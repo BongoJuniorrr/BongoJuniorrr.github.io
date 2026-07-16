@@ -13,26 +13,38 @@ for (const pub of [...publications].sort((a, b) => b.year - a.year)) {
 <BaseLayout title="Publications" description="Academic publications and research contributions.">
   <div class="container">
     <header class="page-header">
+      <p class="eyebrow">Research</p>
       <h1>Publications</h1>
-      <p class="lede">Academic publications and research contributions.</p>
+      <p class="lede">
+        {publications.length} publication{publications.length === 1 ? '' : 's'}, grouped by year.
+      </p>
     </header>
 
     {[...byYear.entries()].map(([year, pubs]) => (
       <section class="year-group">
-        <h2 class="year-heading">{year}</h2>
-        {pubs.map((pub) => <PublicationItem pub={pub} />)}
+        <h2 class="year-heading"><span>{year}</span></h2>
+        {pubs.map((pub) => <PublicationItem pub={pub} showYear={false} />)}
       </section>
     ))}
   </div>
 </BaseLayout>
 
 <style>
-  .year-group { margin-bottom: 2rem; }
+  .year-group { margin-bottom: 2.4rem; }
   .year-heading {
-    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.35rem;
+    font-style: italic;
     color: var(--accent);
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 0.35rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .year-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border-strong), transparent);
   }
 </style>

@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '@fontsource-variable/newsreader';
+import '@fontsource-variable/newsreader/wght-italic.css';
 import '../styles/global.css';
 import site from '../data/site.json';
 import profile from '../data/profile.json';
@@ -31,6 +32,8 @@ const jsonLd = {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9f5" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07090f" />
 
 <title>{pageTitle}</title>
 <meta name="description" content={description} />

@@ -15,8 +15,8 @@ const { Content } = await render(post);
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="container">
     <header class="page-header post-header">
+      <p class="eyebrow">{formatDate(post.data.date)}</p>
       <h1>{post.data.title}</h1>
-      <p class="muted">{formatDate(post.data.date)}</p>
       {post.data.tags.length > 0 && (
         <div class="post-tags">
           {post.data.tags.map((t) => <span class="chip">{t}</span>)}

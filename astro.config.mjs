@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://bongojuniorrr.github.io',
+  site: 'https://thvphuong.id.vn',
   integrations: [sitemap()],
 });

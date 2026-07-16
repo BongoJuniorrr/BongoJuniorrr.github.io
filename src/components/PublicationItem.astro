@@ -11,8 +11,9 @@ interface Props {
     links?: Record<string, string>;
     abstract?: string;
   };
+  showYear?: boolean;
 }
-const { pub } = Astro.props;
+const { pub, showYear = true } = Astro.props;
 
 const linkIcons: Record<string, string> = {
   pdf: 'pdf',
@@ -23,70 +24,118 @@ const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
 ---
 
 <article class="pub reveal">
+  <div class="pub-meta">
+    <span class="pub-venue-badge">{pub.venue}</span>
+    {showYear && <span class="pub-year">{pub.year}</span>}
+  </div>
   <h3 class="pub-title">{pub.title}</h3>
   <p class="pub-authors" set:html={formatAuthors(pub.authors)} />
-  <p class="pub-venue">
-    <em>{pub.venue}</em> · {pub.year}
-  </p>
   {(links.length > 0 || pub.abstract) && (
     <div class="pub-links">
       {links.map(([kind, url]) => (
         <a class="badge-link" href={url} target="_blank" rel="noopener">
           <Icon name={linkIcons[kind] ?? 'external'} size={13} />
-          {kind === 'arxiv' ? 'arXiv' : kind.toUpperCase() === kind ? kind : kind[0].toUpperCase() + kind.slice(1)}
+          {kind === 'arxiv' ? 'arXiv' : kind[0].toUpperCase() + kind.slice(1)}
         </a>
       ))}
+      {pub.abstract && (
+        <details class="pub-abstract">
+          <summary class="badge-link">Abstract</summary>
+        </details>
+      )}
     </div>
   )}
-  {pub.abstract && (
-    <details class="pub-abstract">
-      <summary>Abstract</summary>
-      <p>{pub.abstract}</p>
-    </details>
-  )}
+  {pub.abstract && <p class="pub-abstract-text" hidden>{pub.abstract}</p>}
 </article>
 
 <style>
   .pub {
-    padding: 1.1rem 0 1.2rem;
+    position: relative;
+    padding: 1.25rem 0 1.35rem 1.15rem;
     border-bottom: 1px solid var(--border);
   }
+  .pub::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.55rem;
+    bottom: 1.55rem;
+    width: 2px;
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--accent) 30%, transparent);
+    transition: background 0.2s ease;
+  }
+  .pub:hover::before {
+    background: var(--accent);
+  }
   .pub:last-child { border-bottom: none; }
+
+  .pub-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .pub-venue-badge {
+    font-size: 0.74rem;
+    font-weight: 620;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+    border-radius: 999px;
+    padding: 0.12rem 0.65rem;
+  }
+  .pub-year {
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-faint);
+    font-weight: 560;
+  }
   .pub-title {
-    font-size: 1.12rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.16rem;
+    margin-bottom: 0.3rem;
   }
   .pub-authors {
     font-size: 0.92rem;
     color: var(--text-muted);
   }
-  .pub-authors :global(strong) { color: var(--text); }
-  .pub-venue {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-top: 0.1rem;
+  .pub-authors :global(strong) {
+    color: var(--text);
+    font-weight: 620;
   }
   .pub-links {
     display: flex;
+    align-items: center;
     gap: 0.45rem;
     flex-wrap: wrap;
-    margin-top: 0.55rem;
-  }
-  .pub-abstract {
-    margin-top: 0.6rem;
-    font-size: 0.92rem;
+    margin-top: 0.65rem;
   }
   .pub-abstract summary {
     cursor: pointer;
-    color: var(--accent);
-    font-weight: 550;
-    font-size: 0.85rem;
-    width: fit-content;
+    list-style: none;
+    user-select: none;
   }
-  .pub-abstract p {
-    margin-top: 0.5rem;
+  .pub-abstract summary::-webkit-details-marker { display: none; }
+  .pub-abstract-text {
+    margin-top: 0.6rem;
+    font-size: 0.92rem;
     color: var(--text-muted);
-    padding-left: 0.9rem;
-    border-left: 2px solid var(--border);
+    padding: 0.7rem 1rem;
+    background: var(--bg-subtle);
+    border-radius: 10px;
+    border: 1px solid var(--border);
   }
 </style>
+
+<script>
+  // Toggle abstract visibility from the "Abstract" badge
+  document.querySelectorAll('.pub-abstract').forEach((details) => {
+    details.addEventListener('toggle', () => {
+      const pub = details.closest('.pub');
+      const text = pub?.querySelector('.pub-abstract-text');
+      if (text) (text as HTMLElement).hidden = !(details as HTMLDetailsElement).open;
+    });
+  });
+</script>
