@@ -1,7 +1,7 @@
 [
   {
     "date": "2026-07",
-    "text": "PLACEHOLDER — This personal website is now live! Mỗi tin là một object: date dạng YYYY-MM, text là nội dung (có thể chứa HTML), link (tùy chọn) trỏ tới bài viết/trang liên quan.",
+    "text": "🎉 My personal academic website is now live! (Mỗi tin trong news.json là một object: date dạng YYYY-MM, text là nội dung — có thể chứa HTML, link tùy chọn.)",
     "link": ""
   },
   {
