@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../lib/utils';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Blog" description="Notes on research, learning, and technology.">
+  <div class="container">
+    <header class="page-header">
+      <h1>Blog</h1>
+      <p class="lede">Notes on research, learning, and technology.</p>
+    </header>
+
+    {posts.length === 0 && <p class="muted">No posts yet — check back soon!</p>}
+
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li class="post-item reveal">
+          <a class="post-link" href={`/blog/${post.id}/`}>
+            <h2 class="post-title">{post.data.title}</h2>
+            <p class="muted post-date">{formatDate(post.data.date)}</p>
+            {post.data.description && <p class="post-desc">{post.data.description}</p>}
+            {post.data.tags.length > 0 && (
+              <div class="post-tags">
+                {post.data.tags.map((t) => <span class="chip">{t}</span>)}
+              </div>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .post-list { list-style: none; }
+  .post-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .post-item:last-child { border-bottom: none; }
+  .post-link {
+    display: block;
+    padding: 1.3rem 0;
+    color: inherit;
+  }
+  .post-link:hover { text-decoration: none; }
+  .post-title {
+    font-size: 1.35rem;
+    transition: color 0.15s ease;
+  }
+  .post-link:hover .post-title { color: var(--accent); }
+  .post-date { font-size: 0.85rem; margin: 0.15rem 0 0.35rem; }
+  .post-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .post-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+</style>

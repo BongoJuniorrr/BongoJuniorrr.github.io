@@ -1,0 +1,21 @@
+{
+  "name": "Tran Huu Vu Phuong",
+  "name_variants": ["Tran Huu Vu Phuong", "Phuong Tran Huu Vu", "V. P. Tran", "P. H. V. Tran", "Phuong H. V. Tran"],
+  "tagline": "Computer Science Student · AI Research Enthusiast",
+  "affiliation": "Vietnamese-German University (VGU)",
+  "location": "Vietnam",
+  "avatar": "/avatar.png",
+  "cv": "/cv.pdf",
+  "email": "your.email@example.com",
+  "bio": [
+    "I am a <b>Computer Science student</b> at the <i>Vietnamese-German University (VGU)</i>, passionate about artificial intelligence and its applications. My current interests include machine learning systems, natural language processing, and building reliable AI applications.",
+    "Before university, I studied at <i>Le Quy Don High School for the Gifted — Khanh Hoa</i>, where competitive programming sparked my love for algorithmic problem-solving.",
+    "PLACEHOLDER — thay đoạn này bằng một đoạn giới thiệu về định hướng nghiên cứu, dự định tương lai, hoặc hoạt động ngoại khóa của bạn. Có thể dùng thẻ HTML như <b>đậm</b> và <i>nghiêng</i>."
+  ],
+  "social": [
+    { "platform": "github", "label": "GitHub", "url": "https://github.com/BongoJuniorrr" },
+    { "platform": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/your-linkedin-username" },
+    { "platform": "scholar", "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" },
+    { "platform": "email", "label": "Email", "url": "mailto:your.email@example.com" }
+  ]
+}

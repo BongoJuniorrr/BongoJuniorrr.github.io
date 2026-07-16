@@ -1,0 +1,43 @@
+---
+import site from '../data/site.json';
+import profile from '../data/profile.json';
+import Icon from './Icon.astro';
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="muted">{site.footer_text}</p>
+    <div class="footer-social">
+      {profile.social.map((s) => (
+        <a href={s.url} target={s.platform === 'email' ? undefined : '_blank'} rel="noopener" aria-label={s.label} title={s.label}>
+          <Icon name={s.platform} size={17} />
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border);
+    padding: 1.8rem 0;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+  }
+  .footer-social {
+    display: flex;
+    gap: 0.9rem;
+  }
+  .footer-social a {
+    color: var(--text-muted);
+    line-height: 0;
+  }
+  .footer-social a:hover { color: var(--accent); }
+</style>

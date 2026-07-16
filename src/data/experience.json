@@ -1,0 +1,24 @@
+[
+  {
+    "role": "PLACEHOLDER — Undergraduate Research Assistant",
+    "organization": "Vietnamese-German University (VGU)",
+    "start": "2025",
+    "end": "Present",
+    "location": "Binh Duong, Vietnam",
+    "bullets": [
+      "Mỗi bullet là một dòng mô tả công việc/thành tích.",
+      "Ví dụ: Conducted research on large language model evaluation under supervision of Prof. X.",
+      "Có thể dùng HTML như <b>đậm</b> trong bullet."
+    ]
+  },
+  {
+    "role": "PLACEHOLDER — Student, Specialized Informatics Class",
+    "organization": "Le Quy Don High School for the Gifted — Khanh Hoa",
+    "start": "2022",
+    "end": "2025",
+    "location": "Nha Trang, Vietnam",
+    "bullets": [
+      "Ví dụ: Trained in competitive programming (C++, algorithms, data structures)."
+    ]
+  }
+]

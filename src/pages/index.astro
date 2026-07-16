@@ -1,0 +1,334 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Icon from '../components/Icon.astro';
+import { formatDate } from '../lib/utils';
+
+import profile from '../data/profile.json';
+import news from '../data/news.json';
+import publications from '../data/publications.json';
+import awards from '../data/awards.json';
+import experience from '../data/experience.json';
+import education from '../data/education.json';
+import projects from '../data/projects.json';
+import skills from '../data/skills.json';
+
+const recentNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5);
+const selectedPubs = publications.filter((p) => p.selected);
+const featuredProjects = projects.filter((p) => p.featured);
+---
+
+<BaseLayout>
+  <Hero />
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <div class="bio reveal">
+        {profile.bio.map((p) => <p set:html={p} />)}
+      </div>
+
+      <div class="edu-grid">
+        {education.map((e) => (
+          <div class="card edu-card reveal">
+            <h3>{e.degree}</h3>
+            <p class="edu-school">{e.school}</p>
+            <p class="muted edu-years">{e.years}</p>
+            {e.details && <p class="edu-details">{e.details}</p>}
+          </div>
+        ))}
+      </div>
+
+      <div class="interests reveal">
+        <h3 class="subheading">Research Interests</h3>
+        <div class="interest-chips">
+          {skills.research_interests.map((i) => <span class="chip">{i}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section id="news" class="section">
+    <div class="container">
+      <h2 class="section-title">News</h2>
+      <ul class="news-list">
+        {recentNews.map((n) => (
+          <li class="news-item reveal">
+            <span class="news-date">{formatDate(n.date)}</span>
+            <span class="news-text">
+              <span set:html={n.text} />
+              {n.link && (
+                <a href={n.link} target="_blank" rel="noopener" class="news-link" aria-label="Related link">
+                  <Icon name="external" size={13} />
+                </a>
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Selected publications -->
+  <section id="publications" class="section">
+    <div class="container">
+      <h2 class="section-title">Selected Publications</h2>
+      {selectedPubs.map((pub) => <PublicationItem pub={pub} />)}
+      <p class="view-all reveal">
+        <a href="/publications/">View all publications →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Selected projects -->
+  <section id="projects" class="section">
+    <div class="container-wide">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="project-grid">
+        {featuredProjects.map((p) => <ProjectCard project={p} />)}
+      </div>
+      <p class="view-all reveal">
+        <a href="/projects/">View all projects →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        {experience.map((exp) => (
+          <div class="timeline-item reveal">
+            <div class="timeline-dot" />
+            <div class="timeline-body">
+              <h3 class="exp-role">{exp.role}</h3>
+              <p class="exp-org">
+                {exp.organization}
+                {exp.location && <span class="muted"> · {exp.location}</span>}
+              </p>
+              <p class="exp-dates muted">{exp.start} — {exp.end}</p>
+              {exp.bullets && exp.bullets.length > 0 && (
+                <ul class="exp-bullets">
+                  {exp.bullets.map((b) => <li set:html={b} />)}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section id="awards" class="section">
+    <div class="container">
+      <h2 class="section-title">Honors & Awards</h2>
+      <ul class="awards-list">
+        {awards.map((a) => (
+          <li class="award-item reveal">
+            <span class="award-year">{a.year}</span>
+            <div>
+              <p class="award-title">{a.title}</p>
+              <p class="muted award-org">{a.organization}</p>
+              {a.description && <p class="award-desc muted">{a.description}</p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        {skills.skill_groups.map((g) => (
+          <div class="card skill-card reveal">
+            <h3>{g.category}</h3>
+            <div class="interest-chips">
+              {g.items.map((i) => <span class="chip">{i}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact-section">
+    <div class="container contact-inner reveal">
+      <h2 class="contact-heading">Get in touch</h2>
+      <p class="muted contact-blurb">
+        Feel free to reach out for research collaboration, questions, or just to say hi.
+      </p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href={`mailto:${profile.email}`}>
+          <Icon name="email" size={16} /> {profile.email}
+        </a>
+        <a class="btn btn-ghost" href={profile.cv} target="_blank" rel="noopener">
+          <Icon name="pdf" size={16} /> Download CV
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .bio p { margin-bottom: 0.9rem; }
+
+  .subheading {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.6rem 0;
+  }
+  .edu-card h3 { font-size: 1.05rem; }
+  .edu-school { font-size: 0.92rem; margin-top: 0.2rem; }
+  .edu-years { font-size: 0.85rem; }
+  .edu-details {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+  }
+
+  .interest-chips {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .news-list { list-style: none; }
+  .news-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-date {
+    flex: 0 0 5.2rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    padding-top: 0.15rem;
+    letter-spacing: 0.02em;
+  }
+  .news-text { font-size: 0.95rem; }
+  .news-link {
+    display: inline-block;
+    vertical-align: -2px;
+    margin-left: 0.25rem;
+    line-height: 0;
+  }
+
+  .view-all {
+    margin-top: 1.2rem;
+    font-weight: 550;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.1rem;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 1.4rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.28rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 1.8rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0.4rem; }
+  .timeline-dot {
+    position: absolute;
+    left: -1.4rem;
+    top: 0.42rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .exp-role { font-size: 1.08rem; }
+  .exp-org { font-size: 0.94rem; margin-top: 0.1rem; }
+  .exp-dates { font-size: 0.85rem; }
+  .exp-bullets {
+    margin-top: 0.5rem;
+    padding-left: 1.15rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .exp-bullets li { margin-bottom: 0.25rem; }
+
+  .awards-list { list-style: none; }
+  .award-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .award-item:last-child { border-bottom: none; }
+  .award-year {
+    flex: 0 0 3.4rem;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .award-title { font-weight: 570; }
+  .award-org { font-size: 0.88rem; }
+  .award-desc { font-size: 0.88rem; margin-top: 0.15rem; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .skill-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .contact-section { padding-bottom: 2rem; }
+  .contact-inner {
+    text-align: center;
+    padding-top: 1.5rem;
+  }
+  .contact-heading {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .contact-blurb { margin-bottom: 1.4rem; }
+  .contact-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 640px) {
+    .news-item, .award-item { gap: 0.8rem; }
+  }
+</style>

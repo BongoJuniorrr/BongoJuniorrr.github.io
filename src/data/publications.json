@@ -1,0 +1,28 @@
+[
+  {
+    "title": "PLACEHOLDER — Title of Your First Paper: A Framework for Something Interesting",
+    "authors": ["Tran Huu Vu Phuong", "Co-Author One", "Co-Author Two"],
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "links": {
+      "pdf": "",
+      "arxiv": "https://arxiv.org/abs/0000.00000",
+      "code": "https://github.com/BongoJuniorrr"
+    },
+    "abstract": "PLACEHOLDER — Dán abstract của paper vào đây. Nó sẽ hiển thị dưới dạng mục thu gọn (bấm 'Abstract' để mở).",
+    "selected": true
+  },
+  {
+    "title": "PLACEHOLDER — A Second Example Paper Accepted at a Conference Workshop",
+    "authors": ["Co-Author One", "Tran Huu Vu Phuong", "Co-Author Two"],
+    "venue": "Some Conference 2025 Workshops",
+    "year": 2025,
+    "links": {
+      "pdf": "https://example.com/paper.pdf",
+      "arxiv": "",
+      "code": ""
+    },
+    "abstract": "PLACEHOLDER — Abstract thứ hai. Xóa các mục mẫu này và thay bằng publication thật. Tên của bạn (khớp name_variants trong profile.json) sẽ tự động được in đậm trong danh sách tác giả.",
+    "selected": false
+  }
+]

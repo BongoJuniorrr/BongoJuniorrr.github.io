@@ -1,0 +1,22 @@
+{
+  "research_interests": [
+    "Machine Learning",
+    "Natural Language Processing",
+    "Large Language Models",
+    "PLACEHOLDER — thêm/bớt hướng nghiên cứu tại đây"
+  ],
+  "skill_groups": [
+    {
+      "category": "Programming",
+      "items": ["Python", "C++", "JavaScript/TypeScript"]
+    },
+    {
+      "category": "Machine Learning",
+      "items": ["PyTorch", "Hugging Face Transformers", "scikit-learn"]
+    },
+    {
+      "category": "Tools & Others",
+      "items": ["Git", "Linux", "LaTeX", "Docker"]
+    }
+  ]
+}

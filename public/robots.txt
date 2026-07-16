@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bongojuniorrr.github.io/sitemap-index.xml

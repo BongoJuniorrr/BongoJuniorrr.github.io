@@ -1,0 +1,35 @@
+[
+  {
+    "name": "UniChatbot",
+    "description": "Smart chatbot with a modern RAG (Retrieval-Augmented Generation) system for university admission counseling.",
+    "tags": ["RAG", "NLP", "Chatbot", "Python"],
+    "links": {
+      "github": "https://github.com/BongoJuniorrr/unichatbot",
+      "demo": ""
+    },
+    "image": "",
+    "featured": true
+  },
+  {
+    "name": "Angel — Virtual Assistant",
+    "description": "A personal virtual assistant application with voice interaction capabilities.",
+    "tags": ["AI Assistant", "Python"],
+    "links": {
+      "github": "https://github.com/BongoJuniorrr/Angel-Beta",
+      "demo": ""
+    },
+    "image": "",
+    "featured": true
+  },
+  {
+    "name": "PLACEHOLDER — Another Project",
+    "description": "Mỗi project là một object. featured: true sẽ hiện ở trang chủ; tất cả project hiện ở trang /projects. image (tùy chọn) là đường dẫn ảnh trong thư mục public/, ví dụ \"/projects/myproject.png\".",
+    "tags": ["Tag1", "Tag2"],
+    "links": {
+      "github": "",
+      "demo": ""
+    },
+    "image": "",
+    "featured": false
+  }
+]

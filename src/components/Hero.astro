@@ -1,0 +1,109 @@
+---
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+---
+
+<section class="hero">
+  <div class="container-wide hero-inner">
+    <img class="hero-avatar" src={profile.avatar} alt={profile.name} width="168" height="168" />
+    <div class="hero-text">
+      <p class="hero-hello">Hello, I am</p>
+      <h1 class="hero-name">{profile.name}</h1>
+      <p class="hero-tagline">{profile.tagline}</p>
+      <p class="hero-affiliation muted">{profile.affiliation} · {profile.location}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={profile.cv} target="_blank" rel="noopener">
+          <Icon name="pdf" size={16} /> Download CV
+        </a>
+        {profile.social.map((s) => (
+          <a
+            class="hero-social"
+            href={s.url}
+            target={s.platform === 'email' ? undefined : '_blank'}
+            rel="noopener"
+            aria-label={s.label}
+            title={s.label}
+          >
+            <Icon name={s.platform} size={19} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 4.5rem 0 3rem;
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(60rem 20rem at 80% -5rem, var(--accent-soft), transparent 60%);
+  }
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .hero-avatar {
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bg-surface);
+    box-shadow: var(--shadow-hover);
+    flex-shrink: 0;
+  }
+  .hero-hello {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .hero-name {
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .hero-tagline {
+    font-size: 1.12rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .hero-affiliation { font-size: 0.95rem; }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .hero-social {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .hero-social:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 3rem 0 2.2rem; }
+    .hero-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .hero-avatar { width: 136px; height: 136px; }
+    .hero-actions { justify-content: center; }
+  }
+</style>

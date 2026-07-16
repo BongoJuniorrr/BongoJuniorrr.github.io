@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import projects from '../data/projects.json';
+---
+
+<BaseLayout title="Projects" description="Research and personal software projects.">
+  <div class="container-wide">
+    <header class="page-header">
+      <h1>Projects</h1>
+      <p class="lede">Research and personal software projects.</p>
+    </header>
+
+    <div class="project-grid">
+      {projects.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.1rem;
+    margin-top: 1rem;
+  }
+</style>
