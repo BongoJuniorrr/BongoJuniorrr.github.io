@@ -8,6 +8,7 @@ interface Props {
     authors: string[];
     venue: string;
     year: number;
+    image?: string;
     links?: Record<string, string>;
     abstract?: string;
   };
@@ -24,51 +25,63 @@ const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
 ---
 
 <article class="pub reveal">
-  <div class="pub-meta">
-    <span class="pub-venue-badge">{pub.venue}</span>
-    {showYear && <span class="pub-year">{pub.year}</span>}
-  </div>
-  <h3 class="pub-title">{pub.title}</h3>
-  <p class="pub-authors" set:html={formatAuthors(pub.authors)} />
-  {(links.length > 0 || pub.abstract) && (
-    <div class="pub-links">
-      {links.map(([kind, url]) => (
-        <a class="badge-link" href={url} target="_blank" rel="noopener">
-          <Icon name={linkIcons[kind] ?? 'external'} size={13} />
-          {kind === 'arxiv' ? 'arXiv' : kind[0].toUpperCase() + kind.slice(1)}
-        </a>
-      ))}
-      {pub.abstract && (
-        <details class="pub-abstract">
-          <summary class="badge-link">Abstract</summary>
-        </details>
-      )}
+  {pub.image && (
+    <div class="pub-thumb-wrap">
+      <img class="pub-thumb" src={pub.image} alt={`Figure from: ${pub.title}`} loading="lazy" />
     </div>
   )}
-  {pub.abstract && <p class="pub-abstract-text" hidden>{pub.abstract}</p>}
+  <div class="pub-body">
+    <div class="pub-meta">
+      <span class="pub-venue-badge">{pub.venue}</span>
+      {showYear && <span class="pub-year">{pub.year}</span>}
+    </div>
+    <h3 class="pub-title">{pub.title}</h3>
+    <p class="pub-authors" set:html={formatAuthors(pub.authors)} />
+    {(links.length > 0 || pub.abstract) && (
+      <div class="pub-links">
+        {links.map(([kind, url]) => (
+          <a class="badge-link" href={url} target="_blank" rel="noopener">
+            <Icon name={linkIcons[kind] ?? 'external'} size={13} />
+            {kind === 'arxiv' ? 'arXiv' : kind[0].toUpperCase() + kind.slice(1)}
+          </a>
+        ))}
+        {pub.abstract && (
+          <details class="pub-abstract">
+            <summary class="badge-link">Abstract</summary>
+          </details>
+        )}
+      </div>
+    )}
+    {pub.abstract && <p class="pub-abstract-text" hidden>{pub.abstract}</p>}
+  </div>
 </article>
 
 <style>
   .pub {
-    position: relative;
-    padding: 1.25rem 0 1.35rem 1.15rem;
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--border);
   }
-  .pub::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 1.55rem;
-    bottom: 1.55rem;
-    width: 2px;
-    border-radius: 2px;
-    background: color-mix(in srgb, var(--accent) 30%, transparent);
-    transition: background 0.2s ease;
-  }
-  .pub:hover::before {
-    background: var(--accent);
-  }
   .pub:last-child { border-bottom: none; }
+
+  .pub-thumb-wrap { flex: 0 0 172px; }
+  .pub-thumb {
+    width: 172px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .pub:hover .pub-thumb {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+  .pub-body { flex: 1; min-width: 0; }
 
   .pub-meta {
     display: flex;
@@ -126,6 +139,12 @@ const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
     background: var(--bg-subtle);
     border-radius: 10px;
     border: 1px solid var(--border);
+  }
+
+  @media (max-width: 640px) {
+    .pub { flex-direction: column; gap: 0.9rem; }
+    .pub-thumb-wrap { flex: none; }
+    .pub-thumb { width: 100%; max-width: 320px; }
   }
 </style>
 

@@ -2,7 +2,18 @@
 
 Trang academic profile cá nhân, build bằng [Astro](https://astro.build), host miễn phí trên GitHub Pages.
 
-**Nguyên tắc vàng: muốn sửa nội dung, chỉ cần sửa file JSON trong `src/data/` — không bao giờ phải đụng vào code.** Push lên nhánh `main` là site tự build và cập nhật sau ~1 phút.
+**Nguyên tắc vàng: muốn sửa nội dung, chỉ cần sửa file JSON trong `src/data/` và bỏ ảnh vào `public/images/` — không bao giờ phải đụng vào code.**
+
+## ⚡ Cập nhật site trong 2 bước
+
+1. Sửa file JSON / thêm ảnh / viết blog.
+2. Chạy:
+
+```bash
+./update.sh                      # hoặc: ./update.sh "Nội dung commit"
+```
+
+Script sẽ tự build thử (bắt lỗi JSON sai cú pháp trước khi lên mạng), commit, push — site https://thvphuong.id.vn tự cập nhật sau ~1 phút.
 
 ## 🔑 Muốn sửa gì → mở file nào
 
@@ -16,8 +27,10 @@ Trang academic profile cá nhân, build bằng [Astro](https://astro.build), hos
 | Kinh nghiệm (Experience) | `src/data/experience.json` |
 | Học vấn (Education) | `src/data/education.json` |
 | Projects | `src/data/projects.json` |
-| Kỹ năng + hướng nghiên cứu | `src/data/skills.json` |
-| Ảnh đại diện | Thay file `public/avatar.png` (giữ nguyên tên) |
+| Kỹ năng + hướng nghiên cứu (Research Interests) | `src/data/skills.json` |
+| Ảnh đại diện | Thay `public/images/avatar.png` (giữ nguyên tên; nên dùng ảnh chân dung chuyên nghiệp, nền trung tính) |
+| Ảnh minh họa publication | Bỏ ảnh vào `public/images/publications/` |
+| Ảnh project | Bỏ ảnh vào `public/images/projects/` |
 | CV (nút Download CV) | Thay file `public/cv.pdf` (giữ nguyên tên) |
 | Bài blog | Thêm file `.md` vào `src/content/blog/` |
 
@@ -35,6 +48,7 @@ Mở `src/data/publications.json`, thêm một object vào mảng:
   "authors": ["Tran Huu Vu Phuong", "Đồng tác giả A", "Đồng tác giả B"],
   "venue": "NeurIPS 2027",
   "year": 2027,
+  "image": "/images/publications/ten-anh.png",
   "links": {
     "pdf": "https://.../paper.pdf",
     "arxiv": "https://arxiv.org/abs/xxxx.xxxxx",
@@ -46,6 +60,7 @@ Mở `src/data/publications.json`, thêm một object vào mảng:
 ```
 
 - `selected: true` → hiện ở mục **Selected Publications** trên trang chủ. Tất cả publication luôn hiện đầy đủ ở trang `/publications` (tự nhóm theo năm).
+- `image`: hình thu nhỏ hiện cạnh tiêu đề (nên là figure/diagram chính của paper) — bỏ ảnh vào `public/images/publications/` rồi ghi đường dẫn; không có ảnh thì để `""`.
 - Link nào không có thì để chuỗi rỗng `""`.
 - **Tên của bạn được tự động in đậm** trong danh sách tác giả — miễn là cách viết tên khớp một trong các biến thể trong `name_variants` (file `profile.json`). Nếu paper ghi tên bạn theo kiểu khác (ví dụ `P. H. V. Tran`), thêm biến thể đó vào `name_variants`.
 
@@ -61,8 +76,20 @@ Mở `src/data/news.json`:
 }
 ```
 
-- `date` theo dạng `YYYY-MM` (tự hiển thị thành "Mar 2027", tự sắp xếp mới nhất lên đầu, trang chủ hiện 5 tin mới nhất).
+- `date` theo dạng `YYYY-MM` (tự hiển thị thành "Mar 2027", tự sắp xếp mới nhất lên đầu).
+- Trang chủ hiện 4 tin mới nhất; toàn bộ tin nằm ở trang `/news` (tự nhóm theo năm, có nút "View all news" trên trang chủ).
 - `text` được phép chứa HTML (`<b>`, `<i>`, `<a>`). `link` có thể bỏ trống.
+
+### Sửa Research Interests
+
+Mở `src/data/skills.json`, mỗi interest là một object:
+
+```json
+{
+  "name": "Trustworthy Machine Learning",
+  "description": "Mô tả 1 câu về hướng nghiên cứu (có thể để rỗng)."
+}
+```
 
 ### Thêm một giải thưởng
 

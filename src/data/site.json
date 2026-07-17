@@ -3,6 +3,6 @@
   "description": "Tran Huu Vu Phuong — Computer Science student and AI research enthusiast at Vietnamese-German University (VGU). Academic profile, publications, projects, and blog.",
   "url": "https://thvphuong.id.vn",
   "keywords": "Tran Huu Vu Phuong, VGU, Vietnamese-German University, AI research, academic profile, computer science",
-  "og_image": "/avatar.png",
+  "og_image": "/images/avatar.png",
   "footer_text": "© 2026 Tran Huu Vu Phuong. Built with Astro, hosted on GitHub Pages."
 }

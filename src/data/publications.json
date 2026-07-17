@@ -4,6 +4,7 @@
     "authors": ["Tran Huu Vu Phuong", "Co-Author One", "Co-Author Two"],
     "venue": "arXiv preprint",
     "year": 2026,
+    "image": "/images/publications/sample-figure.png",
     "links": {
       "pdf": "",
       "arxiv": "https://arxiv.org/abs/0000.00000",
@@ -17,6 +18,7 @@
     "authors": ["Co-Author One", "Tran Huu Vu Phuong", "Co-Author Two"],
     "venue": "Some Conference 2025 Workshops",
     "year": 2025,
+    "image": "",
     "links": {
       "pdf": "https://example.com/paper.pdf",
       "arxiv": "",

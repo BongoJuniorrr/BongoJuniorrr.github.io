@@ -1,9 +1,21 @@
 {
   "research_interests": [
-    "Machine Learning",
-    "Natural Language Processing",
-    "Large Language Models",
-    "PLACEHOLDER — thêm/bớt hướng nghiên cứu tại đây"
+    {
+      "name": "Machine Learning",
+      "description": "PLACEHOLDER — mô tả ngắn 1 câu về hướng nghiên cứu này của bạn."
+    },
+    {
+      "name": "Natural Language Processing",
+      "description": "PLACEHOLDER — ví dụ: Building reliable and evaluable language systems."
+    },
+    {
+      "name": "Large Language Models",
+      "description": "PLACEHOLDER — ví dụ: Evaluation, verification, and trustworthy reasoning."
+    },
+    {
+      "name": "PLACEHOLDER — Hướng khác",
+      "description": "Thêm/bớt mục trong research_interests tùy ý; description có thể để rỗng."
+    }
   ],
   "skill_groups": [
     {

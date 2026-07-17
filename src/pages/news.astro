@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { formatDate } from '../lib/utils';
+import news from '../data/news.json';
+
+const allNews = [...news].sort((a, b) => b.date.localeCompare(a.date));
+
+const byYear = new Map<string, typeof allNews>();
+for (const n of allNews) {
+  const year = n.date.split('-')[0];
+  if (!byYear.has(year)) byYear.set(year, []);
+  byYear.get(year)!.push(n);
+}
+---
+
+<BaseLayout title="News" description="News and updates.">
+  <div class="container">
+    <header class="page-header">
+      <p class="eyebrow">Updates</p>
+      <h1>News</h1>
+      <p class="lede">All news and announcements, newest first.</p>
+    </header>
+
+    {[...byYear.entries()].map(([year, items]) => (
+      <section class="year-group">
+        <h2 class="year-heading"><span>{year}</span></h2>
+        <ul class="news-list">
+          {items.map((n) => (
+            <li class="news-item reveal">
+              <span class="news-date">{formatDate(n.date)}</span>
+              <span class="news-text">
+                <span set:html={n.text} />
+                {n.link && (
+                  <a href={n.link} target="_blank" rel="noopener" class="news-link" aria-label="Related link">
+                    <Icon name="external" size={13} />
+                  </a>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .year-group { margin-bottom: 2.2rem; }
+  .year-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .year-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border-strong), transparent);
+  }
+  .news-list { list-style: none; }
+  .news-item {
+    display: flex;
+    gap: 1.4rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-date {
+    flex: 0 0 5.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 0.24rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .news-text { font-size: 0.97rem; }
+  .news-link {
+    display: inline-block;
+    vertical-align: -2px;
+    margin-left: 0.25rem;
+    line-height: 0;
+  }
+
+  @media (max-width: 640px) {
+    .news-item { gap: 0.9rem; }
+  }
+</style>

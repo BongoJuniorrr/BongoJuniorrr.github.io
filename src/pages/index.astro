@@ -16,7 +16,7 @@ import education from '../data/education.json';
 import projects from '../data/projects.json';
 import skills from '../data/skills.json';
 
-const recentNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5);
+const recentNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
 const selectedPubs = publications.filter((p) => p.selected);
 const featuredProjects = projects.filter((p) => p.featured);
 ---
@@ -24,35 +24,17 @@ const featuredProjects = projects.filter((p) => p.featured);
 <BaseLayout>
   <Hero />
 
-  <!-- About -->
+  <!-- 01 · About -->
   <section id="about" class="section">
     <div class="container">
       <SectionHead num="01" title="About" />
       <div class="bio reveal">
         {profile.bio.map((p) => <p set:html={p} />)}
       </div>
-
-      <div class="edu-grid">
-        {education.map((e) => (
-          <div class="card edu-card reveal">
-            <p class="edu-years">{e.years}</p>
-            <h3>{e.degree}</h3>
-            <p class="edu-school">{e.school}</p>
-            {e.details && <p class="edu-details">{e.details}</p>}
-          </div>
-        ))}
-      </div>
-
-      <div class="interests reveal">
-        <h3 class="subheading">Research Interests</h3>
-        <div class="interest-chips">
-          {skills.research_interests.map((i) => <span class="chip">{i}</span>)}
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- News -->
+  <!-- 02 · News -->
   <section id="news" class="section">
     <div class="container">
       <SectionHead num="02" title="News" />
@@ -71,13 +53,50 @@ const featuredProjects = projects.filter((p) => p.featured);
           </li>
         ))}
       </ul>
+      <p class="view-all reveal">
+        <a href="/news/">View all news →</a>
+      </p>
     </div>
   </section>
 
-  <!-- Selected publications -->
+  <!-- 03 · Research Interests -->
+  <section id="research" class="section">
+    <div class="container">
+      <SectionHead num="03" title="Research Interests" />
+      <div class="interest-grid">
+        {skills.research_interests.map((i) => (
+          <div class="interest-item reveal">
+            <h3 class="interest-name">{i.name}</h3>
+            {i.description && <p class="interest-desc">{i.description}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · Education -->
+  <section id="education" class="section">
+    <div class="container">
+      <SectionHead num="04" title="Education" />
+      <ul class="edu-list">
+        {education.map((e) => (
+          <li class="edu-item reveal">
+            <span class="edu-years">{e.years}</span>
+            <div class="edu-body">
+              <h3 class="edu-degree">{e.degree}</h3>
+              <p class="edu-school"><em>{e.school}</em></p>
+              {e.details && <p class="edu-details muted">{e.details}</p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 05 · Selected publications -->
   <section id="publications" class="section">
     <div class="container">
-      <SectionHead num="03" title="Selected Publications" />
+      <SectionHead num="05" title="Selected Publications" />
       {selectedPubs.map((pub) => <PublicationItem pub={pub} />)}
       <p class="view-all reveal">
         <a href="/publications/">View all publications →</a>
@@ -85,23 +104,10 @@ const featuredProjects = projects.filter((p) => p.featured);
     </div>
   </section>
 
-  <!-- Selected projects -->
-  <section id="projects" class="section">
-    <div class="container-wide">
-      <SectionHead num="04" title="Selected Projects" />
-      <div class="project-grid">
-        {featuredProjects.map((p) => <ProjectCard project={p} />)}
-      </div>
-      <p class="view-all reveal">
-        <a href="/projects/">View all projects →</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Experience -->
+  <!-- 06 · Experience -->
   <section id="experience" class="section">
     <div class="container">
-      <SectionHead num="05" title="Experience" />
+      <SectionHead num="06" title="Experience" />
       <div class="timeline">
         {experience.map((exp) => (
           <div class="timeline-item reveal">
@@ -125,10 +131,23 @@ const featuredProjects = projects.filter((p) => p.featured);
     </div>
   </section>
 
-  <!-- Awards -->
+  <!-- 07 · Selected projects -->
+  <section id="projects" class="section">
+    <div class="container-wide">
+      <SectionHead num="07" title="Selected Projects" />
+      <div class="project-grid">
+        {featuredProjects.map((p) => <ProjectCard project={p} />)}
+      </div>
+      <p class="view-all reveal">
+        <a href="/projects/">View all projects →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 08 · Awards -->
   <section id="awards" class="section">
     <div class="container">
-      <SectionHead num="06" title="Honors & Awards" />
+      <SectionHead num="08" title="Honors & Awards" />
       <ul class="awards-list">
         {awards.map((a) => (
           <li class="award-item reveal">
@@ -144,20 +163,20 @@ const featuredProjects = projects.filter((p) => p.featured);
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- 09 · Skills -->
   <section id="skills" class="section">
     <div class="container">
-      <SectionHead num="07" title="Skills" />
-      <div class="skills-grid">
+      <SectionHead num="09" title="Skills" />
+      <ul class="skill-list">
         {skills.skill_groups.map((g) => (
-          <div class="card skill-card reveal">
-            <h3>{g.category}</h3>
-            <div class="interest-chips">
+          <li class="skill-row reveal">
+            <span class="skill-category">{g.category}</span>
+            <span class="skill-chips">
               {g.items.map((i) => <span class="chip">{i}</span>)}
-            </div>
-          </div>
+            </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 
@@ -184,68 +203,29 @@ const featuredProjects = projects.filter((p) => p.featured);
 </BaseLayout>
 
 <style>
-  .bio p { margin-bottom: 0.95rem; }
+  .bio p { margin-bottom: 1rem; }
   .bio :global(b), .bio :global(strong) { font-weight: 620; }
 
-  .subheading {
-    font-size: 1.12rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.05rem;
-    margin: 1.8rem 0;
-  }
-  .edu-years {
-    font-size: 0.78rem;
-    font-weight: 640;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.35rem;
-    font-variant-numeric: tabular-nums;
-  }
-  .edu-card h3 { font-size: 1.08rem; }
-  .edu-school {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    margin-top: 0.2rem;
-  }
-  .edu-details {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px dashed var(--border);
-  }
-
-  .interest-chips {
-    display: flex;
-    gap: 0.45rem;
-    flex-wrap: wrap;
-  }
-
+  /* News */
   .news-list { list-style: none; }
   .news-item {
     display: flex;
-    gap: 1.3rem;
-    padding: 0.62rem 0;
+    gap: 1.4rem;
+    padding: 0.7rem 0;
     border-bottom: 1px dashed var(--border);
   }
   .news-item:last-child { border-bottom: none; }
   .news-date {
-    flex: 0 0 5.4rem;
+    flex: 0 0 5.6rem;
     font-size: 0.8rem;
-    font-weight: 640;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent);
-    padding-top: 0.22rem;
+    padding-top: 0.24rem;
     font-variant-numeric: tabular-nums;
   }
-  .news-text { font-size: 0.96rem; }
+  .news-text { font-size: 0.97rem; }
   .news-link {
     display: inline-block;
     vertical-align: -2px;
@@ -253,12 +233,67 @@ const featuredProjects = projects.filter((p) => p.featured);
     line-height: 0;
   }
 
-  .project-grid {
+  /* Research interests — no boxes, accent tick + text */
+  .interest-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 1.15rem;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem 2.4rem;
+  }
+  .interest-item {
+    position: relative;
+    padding-left: 1.05rem;
+  }
+  .interest-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.42rem;
+    bottom: 0.3rem;
+    width: 3px;
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  .interest-name { font-size: 1.1rem; }
+  .interest-desc {
+    font-size: 0.91rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
   }
 
+  /* Education — de-boxified rows */
+  .edu-list { list-style: none; }
+  .edu-item {
+    display: flex;
+    gap: 1.4rem;
+    padding: 1.05rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-years {
+    flex: 0 0 8.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 0.3rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .edu-degree { font-size: 1.12rem; }
+  .edu-school {
+    font-size: 0.95rem;
+    margin-top: 0.15rem;
+  }
+  .edu-school em {
+    font-family: var(--font-serif);
+    font-size: 1.04em;
+  }
+  .edu-details {
+    font-size: 0.89rem;
+    margin-top: 0.3rem;
+  }
+
+  /* Experience timeline */
   .timeline {
     position: relative;
     padding-left: 1.55rem;
@@ -276,7 +311,7 @@ const featuredProjects = projects.filter((p) => p.featured);
   }
   .timeline-item {
     position: relative;
-    padding-bottom: 2rem;
+    padding-bottom: 2.1rem;
   }
   .timeline-item:last-child { padding-bottom: 0.4rem; }
   .timeline-dot {
@@ -291,8 +326,8 @@ const featuredProjects = projects.filter((p) => p.featured);
   }
   .exp-dates {
     font-size: 0.78rem;
-    font-weight: 640;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--accent);
     font-variant-numeric: tabular-nums;
@@ -316,16 +351,24 @@ const featuredProjects = projects.filter((p) => p.featured);
   .exp-bullets li { margin-bottom: 0.3rem; }
   .exp-bullets li::marker { color: var(--accent); }
 
+  /* Projects */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.15rem;
+  }
+
+  /* Awards */
   .awards-list { list-style: none; }
   .award-item {
     display: flex;
-    gap: 1.3rem;
-    padding: 0.75rem 0;
+    gap: 1.4rem;
+    padding: 0.8rem 0;
     border-bottom: 1px dashed var(--border);
   }
   .award-item:last-child { border-bottom: none; }
   .award-year {
-    flex: 0 0 3.4rem;
+    flex: 0 0 3.6rem;
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 1.08rem;
@@ -337,16 +380,29 @@ const featuredProjects = projects.filter((p) => p.featured);
   .award-org { font-size: 0.88rem; }
   .award-desc { font-size: 0.88rem; margin-top: 0.15rem; }
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.05rem;
+  /* Skills — de-boxified definition rows */
+  .skill-list { list-style: none; }
+  .skill-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.4rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px dashed var(--border);
   }
-  .skill-card h3 {
+  .skill-row:last-child { border-bottom: none; }
+  .skill-category {
+    flex: 0 0 10.5rem;
+    font-family: var(--font-serif);
     font-size: 1.02rem;
-    margin-bottom: 0.65rem;
+    font-weight: 590;
+  }
+  .skill-chips {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
   }
 
+  /* Contact */
   .contact-section { padding-bottom: 1rem; }
   .contact-panel {
     position: relative;
@@ -377,6 +433,8 @@ const featuredProjects = projects.filter((p) => p.featured);
   }
 
   @media (max-width: 640px) {
-    .news-item, .award-item { gap: 0.9rem; }
+    .news-item, .award-item, .edu-item { gap: 0.9rem; }
+    .edu-item, .skill-row { flex-direction: column; gap: 0.3rem; }
+    .edu-years { padding-top: 0; }
   }
 </style>
