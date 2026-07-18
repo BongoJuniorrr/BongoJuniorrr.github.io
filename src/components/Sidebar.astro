@@ -1,0 +1,272 @@
+---
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+
+const path = Astro.url.pathname;
+const isHome = path === '/';
+
+// In-page sections (scroll on home)
+const sections = [
+  { id: 'about', label: 'About' },
+  { id: 'news', label: 'News' },
+  { id: 'research', label: 'Research' },
+  { id: 'education', label: 'Education' },
+  { id: 'publications', label: 'Publications' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'awards', label: 'Awards' },
+  { id: 'skills', label: 'Skills' },
+];
+// Dedicated pages
+const pages = [
+  { href: '/publications/', label: 'All Publications' },
+  { href: '/projects/', label: 'All Projects' },
+  { href: '/blog/', label: 'Blog' },
+];
+const year = new Date().getFullYear();
+---
+
+<aside class="sidebar">
+  <div class="sb-top">
+    <a href="/" class="sb-avatar-link" aria-label="Home">
+      <img class="sb-avatar" src={profile.avatar} alt={profile.name} width="112" height="112" />
+    </a>
+    <a href="/" class="sb-name">{profile.name}</a>
+    <p class="sb-tagline">{profile.tagline}</p>
+    <p class="sb-affil">
+      <em>{profile.affiliation}</em>
+      <span class="sb-loc">{profile.location}</span>
+    </p>
+
+    <div class="sb-social">
+      {profile.social.map((s) => (
+        <a
+          href={s.url}
+          target={s.platform === 'email' ? undefined : '_blank'}
+          rel="noopener"
+          aria-label={s.label}
+          title={s.label}
+        >
+          <Icon name={s.platform} size={17} />
+        </a>
+      ))}
+    </div>
+
+    <a class="btn btn-primary sb-cv" href={profile.cv} target="_blank" rel="noopener">
+      <Icon name="pdf" size={15} /> Download CV
+    </a>
+  </div>
+
+  <nav class="sb-nav" aria-label="Section navigation">
+    <ul>
+      {sections.map((s) => (
+        <li>
+          <a href={`/#${s.id}`} data-nav={isHome ? s.id : undefined}>
+            <span class="sb-dot"></span>{s.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <ul class="sb-pages">
+      {pages.map((p) => (
+        <li>
+          <a href={p.href} aria-current={path.startsWith(p.href) ? 'page' : undefined}>
+            <span class="sb-dot"></span>{p.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <div class="sb-foot">
+    <button class="sb-theme" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="icon-sun"><Icon name="sun" size={16} /></span>
+      <span class="icon-moon"><Icon name="moon" size={15} /></span>
+      <span class="sb-theme-label">Theme</span>
+    </button>
+    <p class="sb-copy">© {year} {profile.name}</p>
+  </div>
+</aside>
+
+<style>
+  .sb-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sb-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .sb-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.15;
+    margin-top: 1.1rem;
+  }
+  .sb-name:hover { text-decoration: none; color: var(--accent); }
+  .sb-tagline {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+  }
+  .sb-affil {
+    font-size: 0.86rem;
+    color: var(--text-faint);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+  .sb-affil em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  .sb-social {
+    display: flex;
+    gap: 0.55rem;
+    margin-top: 1.1rem;
+  }
+  .sb-social a {
+    display: grid;
+    place-items: center;
+    width: 2.15rem;
+    height: 2.15rem;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .sb-social a:hover {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .sb-cv {
+    width: 100%;
+    margin-top: 1.2rem;
+  }
+
+  /* Vertical nav */
+  .sb-nav {
+    margin-top: 2.2rem;
+  }
+  .sb-nav ul { list-style: none; }
+  .sb-pages {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+  }
+  .sb-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.34rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+  }
+  .sb-nav a:hover { color: var(--accent); text-decoration: none; }
+  .sb-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.35;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    flex-shrink: 0;
+  }
+  .sb-nav a:hover .sb-dot { opacity: 0.7; }
+  .sb-nav a.active,
+  .sb-nav a[aria-current='page'] {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .sb-nav a.active .sb-dot,
+  .sb-nav a[aria-current='page'] .sb-dot {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+
+  /* Footer of sidebar */
+  .sb-foot {
+    margin-top: auto;
+    padding-top: 1.6rem;
+  }
+  .sb-theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 550;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .sb-theme:hover { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+  .icon-sun, .icon-moon { display: none; line-height: 0; }
+  :global(:root[data-theme='dark']) .icon-sun { display: block; }
+  :global(:root[data-theme='light']) .icon-moon { display: block; }
+  .sb-copy {
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    margin-top: 1rem;
+  }
+
+  /* ---- Mobile: sidebar becomes a centered hero, nav hidden ---- */
+  @media (max-width: 900px) {
+    .sidebar { padding-top: 4.8rem !important; }
+    .sb-top {
+      align-items: center;
+      text-align: center;
+    }
+    .sb-avatar { width: 116px; height: 116px; }
+    .sb-name { font-size: 1.7rem; margin-top: 1rem; }
+    .sb-affil em { display: inline; }
+    .sb-loc::before { content: ' · '; }
+    .sb-cv { width: auto; padding-inline: 1.6rem; }
+    .sb-nav, .sb-foot { display: none; }
+  }
+</style>
+
+<script>
+  // Scroll-spy: highlight the section currently in view (home page only)
+  const links = document.querySelectorAll<HTMLAnchorElement>('.sb-nav a[data-nav]');
+  if (links.length) {
+    const byId = new Map<string, HTMLAnchorElement>();
+    links.forEach((a) => byId.set(a.dataset.nav!, a));
+    const targets = [...byId.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+
+    const setActive = (id: string) => {
+      links.forEach((a) => a.classList.toggle('active', a.dataset.nav === id));
+    };
+
+    if ('IntersectionObserver' in window && targets.length) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+        },
+        { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+      );
+      targets.forEach((t) => io.observe(t));
+    }
+  }
+</script>

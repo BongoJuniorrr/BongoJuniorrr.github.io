@@ -1,0 +1,122 @@
+---
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+
+const firstName = profile.name.split(' ').at(-1);
+const links = [
+  { href: '/#about', label: 'About' },
+  { href: '/#news', label: 'News' },
+  { href: '/#research', label: 'Research' },
+  { href: '/#education', label: 'Education' },
+  { href: '/publications/', label: 'Publications' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/#awards', label: 'Awards' },
+  { href: '/blog/', label: 'Blog' },
+];
+---
+
+<div class="mbar">
+  <a href="/" class="mbar-brand">{firstName}<span>.</span></a>
+  <div class="mbar-actions">
+    <button class="mbar-icon" data-theme-toggle aria-label="Toggle dark mode">
+      <span class="icon-sun"><Icon name="sun" size={17} /></span>
+      <span class="icon-moon"><Icon name="moon" size={16} /></span>
+    </button>
+    <button class="mbar-icon mbar-menu" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+<nav class="mmenu" aria-label="Mobile navigation">
+  <ul>
+    {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+  </ul>
+</nav>
+
+<style>
+  .mbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.5rem;
+    padding: 0 1.35rem;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(12px) saturate(1.4);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+  }
+  .mbar-brand {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 640;
+    color: var(--text);
+  }
+  .mbar-brand span { color: var(--accent); }
+  .mbar-brand:hover { text-decoration: none; }
+  .mbar-actions { display: flex; gap: 0.5rem; }
+  .mbar-icon {
+    display: grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .icon-sun, .icon-moon { display: none; line-height: 0; }
+  :global(:root[data-theme='dark']) .icon-sun { display: block; }
+  :global(:root[data-theme='light']) .icon-moon { display: block; }
+
+  .mbar-menu { flex-direction: column; justify-content: center; gap: 3.5px; }
+  .mbar-menu span {
+    display: block;
+    width: 17px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .mmenu {
+    display: none;
+    position: sticky;
+    top: 3.5rem;
+    z-index: 49;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .mmenu.open { display: block; }
+  .mmenu ul { list-style: none; padding: 0.5rem 1.35rem 1rem; }
+  .mmenu a {
+    display: block;
+    padding: 0.6rem 0.2rem;
+    color: var(--text-muted);
+    font-weight: 520;
+    border-bottom: 1px solid var(--border);
+  }
+  .mmenu li:last-child a { border-bottom: none; }
+  .mmenu a:hover { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .mbar { display: flex; }
+  }
+</style>
+
+<script>
+  const menuBtn = document.querySelector('.mbar-menu');
+  const menu = document.querySelector('.mmenu');
+  menuBtn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(!!open));
+  });
+  document.querySelectorAll('.mmenu a').forEach((a) =>
+    a.addEventListener('click', () => menu?.classList.remove('open'))
+  );
+</script>

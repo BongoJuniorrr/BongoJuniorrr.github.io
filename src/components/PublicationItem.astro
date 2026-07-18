@@ -21,6 +21,14 @@ const linkIcons: Record<string, string> = {
   arxiv: 'arxiv',
   code: 'code',
 };
+const linkLabels: Record<string, string> = {
+  pdf: 'PDF',
+  arxiv: 'arXiv',
+  code: 'Code',
+  slides: 'Slides',
+  poster: 'Poster',
+  video: 'Video',
+};
 const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
 ---
 
@@ -42,7 +50,7 @@ const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
         {links.map(([kind, url]) => (
           <a class="badge-link" href={url} target="_blank" rel="noopener">
             <Icon name={linkIcons[kind] ?? 'external'} size={13} />
-            {kind === 'arxiv' ? 'arXiv' : kind[0].toUpperCase() + kind.slice(1)}
+            {linkLabels[kind] ?? kind[0].toUpperCase() + kind.slice(1)}
           </a>
         ))}
         {pub.abstract && (
