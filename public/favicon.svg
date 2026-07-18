@@ -1,4 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#234a75"/>
-  <text x="32" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="36" font-weight="600" fill="#ffffff">P</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2c5f92"/>
+      <stop offset="1" stop-color="#1a3a5e"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dce7f2"/>
+    </linearGradient>
+  </defs>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1.2"/>
+  <text x="32" y="45.5" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-weight="600"
+        font-size="40" fill="url(#ink)" letter-spacing="-1">P</text>
+  <circle cx="45.5" cy="42.5" r="2.6" fill="#7fb0e6"/>
 </svg>
