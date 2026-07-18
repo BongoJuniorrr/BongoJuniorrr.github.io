@@ -20,16 +20,5 @@
     },
     "image": "",
     "featured": true
-  },
-  {
-    "name": "PLACEHOLDER — Another Project",
-    "description": "Mỗi project là một object. featured: true sẽ hiện ở trang chủ; tất cả project hiện ở trang /projects. image (tùy chọn) là đường dẫn ảnh trong thư mục public/, ví dụ \"/projects/myproject.png\".",
-    "tags": ["Tag1", "Tag2"],
-    "links": {
-      "github": "",
-      "demo": ""
-    },
-    "image": "",
-    "featured": false
   }
 ]
