@@ -1,34 +1,38 @@
 {
   "research_interests": [
     {
-      "name": "Machine Learning",
-      "description": "PLACEHOLDER — mô tả ngắn 1 câu về hướng nghiên cứu này của bạn."
-    },
-    {
       "name": "Natural Language Processing",
-      "description": "PLACEHOLDER — ví dụ: Building reliable and evaluable language systems."
+      "description": "Argument mining, fact verification, and reliable text understanding."
     },
     {
-      "name": "Large Language Models",
-      "description": "PLACEHOLDER — ví dụ: Evaluation, verification, and trustworthy reasoning."
+      "name": "LLMs & LLM Agents",
+      "description": "Retrieval-augmented, debate-based, and instruction-tuned language systems."
     },
     {
-      "name": "PLACEHOLDER — Hướng khác",
-      "description": "Thêm/bớt mục trong research_interests tùy ý; description có thể để rỗng."
+      "name": "AI for Software Engineering",
+      "description": "Applying LLMs to program repair and software analysis."
+    },
+    {
+      "name": "Data Mining",
+      "description": "Extracting structure and knowledge from large, noisy corpora."
     }
   ],
   "skill_groups": [
     {
       "category": "Programming",
-      "items": ["Python", "C++", "JavaScript/TypeScript"]
+      "items": ["Python", "C++ (OOP)"]
     },
     {
-      "category": "Machine Learning",
-      "items": ["PyTorch", "Hugging Face Transformers", "scikit-learn"]
+      "category": "ML / DL",
+      "items": ["PyTorch", "Deep-learning fine-tuning (EVA-02 CLIP)", "LLMs", "Retrieval-Augmented Generation (RAG)", "NLP", "Neuro-symbolic methods"]
     },
     {
-      "category": "Tools & Others",
-      "items": ["Git", "Linux", "LaTeX", "Docker"]
+      "category": "Tools",
+      "items": ["LaTeX / XeLaTeX", "Git", "Linux"]
+    },
+    {
+      "category": "Languages",
+      "items": ["Vietnamese (Native)", "English (IELTS 6.5)", "German (B1)"]
     }
   ]
 }

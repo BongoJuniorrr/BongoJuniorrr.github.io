@@ -1,16 +1,22 @@
 [
   {
     "date": "2026-07",
-    "text": "🎉 My personal academic website is now live! (Mỗi tin trong news.json là một object: date dạng YYYY-MM, text là nội dung — có thể chứa HTML, link tùy chọn.)",
-    "link": ""
+    "text": "🏆 Our team <b>LLM-INSTRUCT</b> won <b>1st place (Champion)</b> at the UZH Shared Task 2026 (ArgMining Workshop, ACL 2026).",
+    "link": "https://aclanthology.org/2026.argmining-1.11/"
   },
   {
     "date": "2026-05",
-    "text": "PLACEHOLDER — Ví dụ: Our paper on <b>XYZ</b> was accepted at ABC 2026! 🎉",
-    "link": "https://example.com"
+    "text": "New first-author manuscript <b>SCoRe: Smoothed Certified Release for Prompt Repair</b> submitted to <b>NeurIPS 2026</b> (CORE A*).",
+    "link": ""
   },
   {
-    "date": "2026-01",
-    "text": "PLACEHOLDER — Ví dụ: Started working as an undergraduate research assistant at XYZ Lab."
+    "date": "2026-04",
+    "text": "Two first-author journal manuscripts under review at <b>JAIR</b> and <b>LRE</b> (Q1) on risk-controlled RAG fact-checking and claim decomposition.",
+    "link": ""
+  },
+  {
+    "date": "2025-09",
+    "text": "🥉 Awarded a <b>Bronze Medal</b> at the Vietnam Olympiad of Artificial Intelligence (VOAI 2025).",
+    "link": ""
   }
 ]

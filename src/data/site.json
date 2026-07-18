@@ -1,8 +1,8 @@
 {
-  "title": "Tran Huu Vu Phuong",
-  "description": "Tran Huu Vu Phuong — Computer Science student and AI research enthusiast at Vietnamese-German University (VGU). Academic profile, publications, projects, and blog.",
+  "title": "Phuong Huu Vu Tran",
+  "description": "Phuong Huu Vu Tran — Computer Science undergraduate at the Vietnamese–German University, researching NLP, LLMs & LLM agents, AI for software engineering, and data mining. Champion of the UZH Shared Task 2026 (ArgMining, ACL 2026).",
   "url": "https://thvphuong.id.vn",
-  "keywords": "Tran Huu Vu Phuong, VGU, Vietnamese-German University, AI research, academic profile, computer science",
+  "keywords": "Phuong Huu Vu Tran, Tran Huu Vu Phuong, VGU, Vietnamese-German University, NLP, large language models, LLM agents, AI for software engineering, data mining, argument mining, academic profile",
   "og_image": "/images/avatar.png",
-  "footer_text": "© 2026 Tran Huu Vu Phuong. Built with Astro, hosted on GitHub Pages."
+  "footer_text": "© 2026 Phuong Huu Vu Tran. Built with Astro, hosted on GitHub Pages."
 }

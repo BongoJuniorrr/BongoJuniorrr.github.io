@@ -8,6 +8,7 @@ interface Props {
     authors: string[];
     venue: string;
     year: number;
+    status?: string;
     image?: string;
     links?: Record<string, string>;
     abstract?: string;
@@ -20,16 +21,27 @@ const linkIcons: Record<string, string> = {
   pdf: 'pdf',
   arxiv: 'arxiv',
   code: 'code',
+  anthology: 'book',
 };
 const linkLabels: Record<string, string> = {
   pdf: 'PDF',
   arxiv: 'arXiv',
   code: 'Code',
+  anthology: 'ACL Anthology',
   slides: 'Slides',
   poster: 'Poster',
   video: 'Video',
 };
 const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
+
+// Status badge styling: award-like (gold) vs under-review (amber) vs neutral
+const statusKind = pub.status
+  ? /champion|best|award|winner|1st/i.test(pub.status)
+    ? 'award'
+    : /review|submitted|preprint/i.test(pub.status)
+      ? 'review'
+      : 'neutral'
+  : null;
 ---
 
 <article class="pub reveal">
@@ -41,6 +53,7 @@ const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
   <div class="pub-body">
     <div class="pub-meta">
       <span class="pub-venue-badge">{pub.venue}</span>
+      {pub.status && <span class={`pub-status pub-status--${statusKind}`}>{pub.status}</span>}
       {showYear && <span class="pub-year">{pub.year}</span>}
     </div>
     <h3 class="pub-title">{pub.title}</h3>
@@ -113,6 +126,35 @@ const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
     font-variant-numeric: tabular-nums;
     color: var(--text-faint);
     font-weight: 560;
+  }
+  .pub-status {
+    font-size: 0.72rem;
+    font-weight: 640;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    padding: 0.12rem 0.6rem;
+    border: 1px solid transparent;
+  }
+  .pub-status--award {
+    color: #9a6a00;
+    background: rgba(196, 148, 0, 0.12);
+    border-color: rgba(196, 148, 0, 0.4);
+  }
+  .pub-status--review {
+    color: var(--text-muted);
+    background: var(--bg-subtle);
+    border-color: var(--border-strong);
+  }
+  .pub-status--neutral {
+    color: var(--text-muted);
+    background: var(--bg-subtle);
+    border-color: var(--border);
+  }
+  :global(:root[data-theme='dark']) .pub-status--award {
+    color: #f0c650;
+    background: rgba(240, 198, 80, 0.12);
+    border-color: rgba(240, 198, 80, 0.35);
   }
   .pub-title {
     font-size: 1.16rem;

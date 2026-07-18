@@ -1,30 +1,49 @@
 [
   {
-    "title": "PLACEHOLDER — Title of Your First Paper: A Framework for Something Interesting",
-    "authors": ["Tran Huu Vu Phuong", "Co-Author One", "Co-Author Two"],
-    "venue": "arXiv preprint",
+    "title": "LLM-INSTRUCT at UZH Shared Task 2026: Constraint-Aware Retrieval and Selective Debate for Paragraph-Level Argument Mining",
+    "authors": ["Phuong Huu Vu Tran", "Long Minh Vo", "Son Nguyen Minh Le", "Hoang Van"],
+    "venue": "ArgMining 2026 · ACL 2026 Workshop",
     "year": 2026,
-    "image": "/images/publications/sample-figure.png",
+    "status": "Champion",
+    "image": "",
     "links": {
-      "pdf": "",
-      "arxiv": "https://arxiv.org/abs/0000.00000",
-      "code": "https://github.com/BongoJuniorrr"
+      "pdf": "https://aclanthology.org/2026.argmining-1.11.pdf",
+      "anthology": "https://aclanthology.org/2026.argmining-1.11/"
     },
-    "abstract": "PLACEHOLDER — Dán abstract của paper vào đây. Nó sẽ hiển thị dưới dạng mục thu gọn (bấm 'Abstract' để mở).",
+    "abstract": "Winning system for the UZH Shared Task 2026 on paragraph-level argument mining in UN and UNESCO resolutions. Using open-weight models limited to 8B parameters, the approach combines constraint-aware retrieval with a selective multi-agent debate to identify argumentative paragraphs and predict argumentative relations.",
     "selected": true
   },
   {
-    "title": "PLACEHOLDER — A Second Example Paper Accepted at a Conference Workshop",
-    "authors": ["Co-Author One", "Tran Huu Vu Phuong", "Co-Author Two"],
-    "venue": "Some Conference 2025 Workshops",
-    "year": 2025,
+    "title": "SCoRe: Smoothed Certified Release for Prompt Repair",
+    "authors": ["Phuong Huu Vu Tran"],
+    "venue": "NeurIPS 2026 · CORE A*",
+    "year": 2026,
+    "status": "Under review",
     "image": "",
-    "links": {
-      "pdf": "https://example.com/paper.pdf",
-      "arxiv": "",
-      "code": ""
-    },
-    "abstract": "PLACEHOLDER — Abstract thứ hai. Xóa các mục mẫu này và thay bằng publication thật. Tên của bạn (khớp name_variants trong profile.json) sẽ tự động được in đậm trong danh sách tác giả.",
+    "links": {},
+    "abstract": "",
+    "selected": true
+  },
+  {
+    "title": "Risk-Controlled Evidence-Regime Verification for Noisy, Updatable RAG Fact Checking: A Benchmark and a Conformal Answer/Fallback/Abstain Protocol",
+    "authors": ["Phuong Huu Vu Tran"],
+    "venue": "Journal of Artificial Intelligence Research (JAIR) · Q1",
+    "year": 2026,
+    "status": "Under review",
+    "image": "",
+    "links": {},
+    "abstract": "",
+    "selected": true
+  },
+  {
+    "title": "CREDENCE: Claim Reduction for Decomposition-Enhanced Credibility — Semantic Metrics and Convergence Analysis",
+    "authors": ["Phuong Huu Vu Tran"],
+    "venue": "Language Resources and Evaluation (LRE) · Q1",
+    "year": 2026,
+    "status": "Under review",
+    "image": "",
+    "links": {},
+    "abstract": "",
     "selected": false
   }
 ]

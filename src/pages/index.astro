@@ -110,7 +110,9 @@ const featuredProjects = projects.filter((p) => p.featured);
           <div class="timeline-item reveal">
             <div class="timeline-dot" />
             <div class="timeline-body">
-              <p class="exp-dates">{exp.start} — {exp.end}</p>
+              {(exp.start || exp.end) && (
+                <p class="exp-dates">{[exp.start, exp.end].filter(Boolean).join(' — ')}</p>
+              )}
               <h3 class="exp-role">{exp.role}</h3>
               <p class="exp-org">
                 <em>{exp.organization}</em>

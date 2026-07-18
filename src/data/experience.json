@@ -1,24 +1,34 @@
 [
   {
-    "role": "PLACEHOLDER — Undergraduate Research Assistant",
-    "organization": "Vietnamese-German University (VGU)",
-    "start": "2025",
-    "end": "Present",
-    "location": "Binh Duong, Vietnam",
-    "bullets": [
-      "Mỗi bullet là một dòng mô tả công việc/thành tích.",
-      "Ví dụ: Conducted research on large language model evaluation under supervision of Prof. X.",
-      "Có thể dùng HTML như <b>đậm</b> trong bullet."
-    ]
+    "role": "Undergraduate Research Assistant",
+    "organization": "VGU AI Lab",
+    "location": "Vietnamese–German University",
+    "start": "",
+    "end": "",
+    "bullets": ["Supervisor: Dr. Cuong Tuan Nguyen"]
   },
   {
-    "role": "PLACEHOLDER — Student, Specialized Informatics Class",
-    "organization": "Le Quy Don High School for the Gifted — Khanh Hoa",
-    "start": "2022",
-    "end": "2025",
-    "location": "Nha Trang, Vietnam",
-    "bullets": [
-      "Ví dụ: Trained in competitive programming (C++, algorithms, data structures)."
-    ]
+    "role": "AI Research & Development Intern",
+    "organization": "Transformers Lab — AI Lab",
+    "location": "",
+    "start": "",
+    "end": "",
+    "bullets": ["Supervisor: Assoc. Prof. Dr. Ngoc-Thanh Dinh"]
+  },
+  {
+    "role": "Undergraduate Research Assistant",
+    "organization": "RAISE Lab",
+    "location": "Ho Chi Minh City University of Technology (HCMUT)",
+    "start": "",
+    "end": "",
+    "bullets": ["Supervisor: Dr. Xuan-Bach Le"]
+  },
+  {
+    "role": "Undergraduate Research Assistant",
+    "organization": "Dream AI Lab",
+    "location": "Monash University",
+    "start": "",
+    "end": "",
+    "bullets": ["Supervisor: Prof. Dr. Trung Le"]
   }
 ]

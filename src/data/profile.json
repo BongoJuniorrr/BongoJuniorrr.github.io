@@ -1,21 +1,22 @@
 {
-  "name": "Tran Huu Vu Phuong",
-  "name_variants": ["Tran Huu Vu Phuong", "Phuong Tran Huu Vu", "V. P. Tran", "P. H. V. Tran", "Phuong H. V. Tran"],
-  "tagline": "Computer Science Student · AI Research Enthusiast",
-  "affiliation": "Vietnamese-German University (VGU)",
-  "location": "Vietnam",
+  "name": "Phuong Huu Vu Tran",
+  "name_variants": ["Phuong Huu Vu Tran", "Tran, P. H. V.", "P. H. V. Tran", "P.H.V. Tran", "Phuong H. V. Tran", "Tran Huu Vu Phuong"],
+  "tagline": "Computer Science Undergraduate · AI/ML & NLP Research",
+  "affiliation": "Vietnamese–German University (VGU)",
+  "location": "Ho Chi Minh City, Vietnam",
   "avatar": "/images/avatar.png",
   "cv": "/cv.pdf",
-  "email": "your.email@example.com",
+  "email": "tranhuuvuphuong218@gmail.com",
   "bio": [
-    "I am a <b>Computer Science student</b> at the <i>Vietnamese-German University (VGU)</i>, passionate about artificial intelligence and its applications. My current interests include machine learning systems, natural language processing, and building reliable AI applications.",
-    "Before university, I studied at <i>Le Quy Don High School for the Gifted — Khanh Hoa</i>, where competitive programming sparked my love for algorithmic problem-solving.",
-    "PLACEHOLDER — thay đoạn này bằng một đoạn giới thiệu về định hướng nghiên cứu, dự định tương lai, hoặc hoạt động ngoại khóa của bạn. Có thể dùng thẻ HTML như <b>đậm</b> và <i>nghiêng</i>."
+    "I am a rising second-year <b>Computer Science undergraduate</b> at the <i>Vietnamese–German University (VGU)</i> (GPA 9.0/10), a programme taught in English in cooperation with German partner universities.",
+    "My research spans <b>natural language processing</b>, <b>large language models &amp; LLM agents</b>, <b>AI for software engineering</b>, and <b>data mining</b>. I have first-author manuscripts under review at CORE A* venues (NeurIPS, ICSE, ICDM) and Q1 journals (JAIR, LRE), a peer-reviewed workshop publication, and a shared-task championship.",
+    "I am actively engaged across four research labs in Vietnam and abroad, and I enjoy building reliable, verifiable AI systems. Reach me at <a href=\"mailto:10425032@student.vgu.edu.vn\">10425032@student.vgu.edu.vn</a>."
   ],
   "social": [
+    { "platform": "scholar", "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" },
+    { "platform": "orcid", "label": "ORCID", "url": "https://orcid.org/0000-0000-0000-0000" },
     { "platform": "github", "label": "GitHub", "url": "https://github.com/BongoJuniorrr" },
     { "platform": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/your-linkedin-username" },
-    { "platform": "scholar", "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" },
-    { "platform": "email", "label": "Email", "url": "mailto:your.email@example.com" }
+    { "platform": "email", "label": "Email", "url": "mailto:tranhuuvuphuong218@gmail.com" }
   ]
 }

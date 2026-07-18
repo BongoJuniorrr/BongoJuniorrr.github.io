@@ -1,14 +1,20 @@
 [
   {
     "year": "2026",
-    "title": "PLACEHOLDER — Ví dụ: Third Prize, Vietnamese Olympiad in Informatics (VOI)",
-    "organization": "Ministry of Education and Training, Vietnam",
-    "description": "Mô tả ngắn (tùy chọn) — có thể để chuỗi rỗng hoặc xóa dòng này."
+    "title": "Champion (1st place) — UZH Shared Task 2026",
+    "organization": "ArgMining Workshop 2026 (ACL 2026)",
+    "description": "Paragraph-level argument mining in UN & UNESCO resolutions with the LLM-INSTRUCT system."
+  },
+  {
+    "year": "2026",
+    "title": "Promising Award (Semi-finalist) — VTV AI Thực Chiến 2026",
+    "organization": "Vietnam Television (VTV)",
+    "description": ""
   },
   {
     "year": "2025",
-    "title": "PLACEHOLDER — Ví dụ: Full Scholarship, Vietnamese-German University",
-    "organization": "Vietnamese-German University",
+    "title": "Bronze Medal — Vietnam Olympiad of Artificial Intelligence (VOAI 2025)",
+    "organization": "VOAI",
     "description": ""
   }
 ]
