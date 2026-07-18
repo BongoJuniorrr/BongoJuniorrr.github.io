@@ -15,7 +15,7 @@
   },
   {
     "title": "SCoRe: Smoothed Certified Release for Prompt Repair",
-    "authors": ["Phuong Huu Vu Tran"],
+    "authors": ["Phuong Huu Vu Tran", "Thuan Duc Mai", "Phat T. Tran-Truong", "Son Ha Xuạn", "Xuan-Bach Le"],
     "venue": "NeurIPS 2026 · CORE A*",
     "year": 2026,
     "status": "Under review",
@@ -26,7 +26,7 @@
   },
   {
     "title": "Risk-Controlled Evidence-Regime Verification for Noisy, Updatable RAG Fact Checking: A Benchmark and a Conformal Answer/Fallback/Abstain Protocol",
-    "authors": ["Phuong Huu Vu Tran"],
+    "authors": ["Phuong Huu Vu Tran", "Thuan Duc Mai", "Hieu Dinh Trung Pham", "Xuan-Bach Le"],
     "venue": "Journal of Artificial Intelligence Research (JAIR) · Q1",
     "year": 2026,
     "status": "Under review",
@@ -37,7 +37,7 @@
   },
   {
     "title": "CREDENCE: Claim Reduction for Decomposition-Enhanced Credibility — Semantic Metrics and Convergence Analysis",
-    "authors": ["Phuong Huu Vu Tran"],
+    "authors": ["Phuong Huu Vu Tran", "Thuan Duc Mai", "Xuan-Bach Le"],
     "venue": "Language Resources and Evaluation (LRE) · Q1",
     "year": 2026,
     "status": "Under review",
