@@ -9,6 +9,7 @@ interface Props {
     venue: string;
     year: number;
     status?: string;
+    note?: string;
     image?: string;
     links?: Record<string, string>;
     abstract?: string;
@@ -38,9 +39,11 @@ const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
 const statusKind = pub.status
   ? /champion|best|award|winner|1st/i.test(pub.status)
     ? 'award'
-    : /review|submitted|preprint/i.test(pub.status)
-      ? 'review'
-      : 'neutral'
+    : /accept|published|camera|to appear/i.test(pub.status)
+      ? 'accepted'
+      : /review|submitted|preprint/i.test(pub.status)
+        ? 'review'
+        : 'neutral'
   : null;
 ---
 
@@ -58,6 +61,7 @@ const statusKind = pub.status
     </div>
     <h3 class="pub-title">{pub.title}</h3>
     <p class="pub-authors" set:html={formatAuthors(pub.authors)} />
+    {pub.note && <p class="pub-note">{pub.note}</p>}
     {(links.length > 0 || pub.abstract) && (
       <div class="pub-links">
         {links.map(([kind, url]) => (
@@ -141,6 +145,16 @@ const statusKind = pub.status
     background: rgba(196, 148, 0, 0.12);
     border-color: rgba(196, 148, 0, 0.4);
   }
+  .pub-status--accepted {
+    color: #1f7a4d;
+    background: rgba(31, 122, 77, 0.1);
+    border-color: rgba(31, 122, 77, 0.38);
+  }
+  :global(:root[data-theme='dark']) .pub-status--accepted {
+    color: #5bd39a;
+    background: rgba(91, 211, 154, 0.12);
+    border-color: rgba(91, 211, 154, 0.32);
+  }
   .pub-status--review {
     color: var(--text-muted);
     background: var(--bg-subtle);
@@ -167,6 +181,12 @@ const statusKind = pub.status
   .pub-authors :global(strong) {
     color: var(--text);
     font-weight: 620;
+  }
+  .pub-note {
+    font-size: 0.84rem;
+    color: var(--accent);
+    font-weight: 550;
+    margin-top: 0.25rem;
   }
   .pub-links {
     display: flex;
