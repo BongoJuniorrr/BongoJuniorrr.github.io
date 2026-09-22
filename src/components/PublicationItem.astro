@@ -15,7 +15,6 @@ interface Props {
     abstract?: string;
     role?: string;
     outcome?: string;
-    authors_html?: string;
     ranking?: string;
     track?: string;
   };
@@ -71,7 +70,7 @@ const statusKind = pub.status
       {showYear && <span class="pub-year">{pub.year}</span>}
     </div>
     <h3 class="pub-title">{pub.title}</h3>
-    <p class="pub-authors" set:html={pub.authors_html ?? formatAuthors(pub.authors)} />
+    <p class="pub-authors" set:html={formatAuthors(pub.authors)} />
     {(pub.role || pub.outcome || pub.note) && <p class="pub-note">{[pub.role, pub.outcome, pub.note].filter(Boolean).join(' · ')}</p>}
     {(links.length > 0 || pub.abstract) && (
       <div class="pub-links">
@@ -146,24 +145,25 @@ const statusKind = pub.status
     border: 1px solid var(--border-strong);
     border-radius: 3px;
     color: var(--text-muted);
-    font-size: .7rem;
-    font-weight: 720;
+    font-size: .72rem;
+    font-weight: 640;
     letter-spacing: .05em;
     line-height: 1.25;
-    padding: .12rem .38rem;
+    padding: .12rem .6rem;
     text-transform: uppercase;
   }
-  .venue-label--astar { background: #1d4f7d; border-color: #1d4f7d; color: #fff; }
+  .venue-label--astar { background: #23734f; border-color: #23734f; color: #fff; font-weight: 760; }
   .venue-label--a { background: #e4eef7; border-color: #8aafd0; color: #173f63; }
   .venue-label--q1 { background: #315f4b; border-color: #315f4b; color: #fff; }
   .venue-label--q2 { background: #e5f0ea; border-color: #94b7a2; color: #254a39; }
   .venue-label--b, .venue-label--q3 { background: var(--bg-subtle); }
   .venue-label--c, .venue-label--q4, .venue-label--unranked { opacity: .76; }
-  .venue-label--track { background: transparent; font-weight: 600; letter-spacing: .025em; text-transform: none; }
-  :global(:root[data-theme='dark']) .venue-label--astar { background: #467fae; border-color: #467fae; color: #fff; }
+  .venue-label--track { background: #f6ead2; border-color: #d5ae6d; color: #6b4913; font-weight: 680; letter-spacing: .025em; text-transform: none; }
+  :global(:root[data-theme='dark']) .venue-label--astar { background: #31835c; border-color: #31835c; color: #fff; }
   :global(:root[data-theme='dark']) .venue-label--a { background: #18334c; border-color: #527da3; color: #b8d8f3; }
   :global(:root[data-theme='dark']) .venue-label--q1 { background: #3e735b; border-color: #3e735b; }
   :global(:root[data-theme='dark']) .venue-label--q2 { background: #1f3d30; border-color: #638f76; color: #b8dec5; }
+  :global(:root[data-theme='dark']) .venue-label--track { background: #3b2d18; border-color: #8e6b37; color: #ead29d; }
   .pub-status {
     font-size: 0.72rem;
     font-weight: 640;
