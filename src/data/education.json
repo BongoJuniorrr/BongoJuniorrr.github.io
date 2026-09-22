@@ -1,14 +1,4 @@
 [
-  {
-    "degree": "B.Sc. in Computer Science",
-    "school": "Vietnamese–German University (VGU)",
-    "years": "2025 — 2029 (expected)",
-    "details": "GPA 9.0/10 (Foundation Year). Programme delivered in cooperation with German partner universities; language of instruction: English. Ho Chi Minh City, Vietnam."
-  },
-  {
-    "degree": "High School — Specialization in Informatics",
-    "school": "Le Quy Don High School for the Gifted",
-    "years": "2022 — 2025",
-    "details": "GPA 8.7/10. Khanh Hoa, Vietnam."
-  }
+  {"degree":"B.Sc. in Computer Science","school":"Vietnamese-German University (VGU)","years":"2025 - 2029 (expected)","details":["Foundation Year GPA: 9.0/10","Programme delivered in cooperation with German partner universities","Language of instruction: English","Ho Chi Minh City, Vietnam"]},
+  {"degree":"High School - Specialization in Informatics","school":"Le Quy Don High School for the Gifted","years":"2022 - 2025","details":["GPA: 8.7/10","Khanh Hoa, Vietnam"]}
 ]

@@ -16,7 +16,7 @@ const posts = (await getCollection('blog')).sort(
       <p class="lede">Notes on research, learning, and technology.</p>
     </header>
 
-    {posts.length === 0 && <p class="muted">No posts yet — check back soon!</p>}
+    {posts.length === 0 && <p class="muted">No posts yet - check back soon!</p>}
 
     <ul class="post-list">
       {posts.map((post) => (

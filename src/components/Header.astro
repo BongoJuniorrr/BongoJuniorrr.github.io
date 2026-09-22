@@ -13,7 +13,7 @@ const links = [
 
 <header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="/" aria-label={`${profile.name} — home`}>{profile.short_name}<span>.</span></a>
+    <a class="brand" href="/" aria-label={`${profile.name} - home`}>{profile.short_name}<span>.</span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
       {links.map((link) => <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>)}
       <a href={profile.cv} target="_blank" rel="noopener">CV <span aria-hidden="true">↗</span></a>

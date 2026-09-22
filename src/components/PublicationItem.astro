@@ -15,6 +15,9 @@ interface Props {
     abstract?: string;
     role?: string;
     outcome?: string;
+    authors_html?: string;
+    ranking?: string;
+    track?: string;
   };
   showYear?: boolean;
 }
@@ -38,6 +41,8 @@ const linkLabels: Record<string, string> = {
   video: 'Video',
 };
 const links = Object.entries(pub.links ?? {}).filter(([, url]) => url);
+const showVenueLabels = !/review|submitted|preprint/i.test(pub.status ?? '');
+const rankingKind = pub.ranking?.toLowerCase().replace('*', 'star');
 
 // Status badge styling: award-like (gold) vs under-review (amber) vs neutral
 const statusKind = pub.status
@@ -60,11 +65,13 @@ const statusKind = pub.status
   <div class="pub-body">
     <div class="pub-meta">
       <span class="pub-venue-badge">{pub.venue}</span>
+      {showVenueLabels && pub.ranking && <span class={`venue-label venue-label--${rankingKind}`}>{pub.ranking}</span>}
+      {showVenueLabels && pub.track && <span class="venue-label venue-label--track">{pub.track}</span>}
       {pub.status && <span class={`pub-status pub-status--${statusKind}`}>{pub.status}</span>}
       {showYear && <span class="pub-year">{pub.year}</span>}
     </div>
     <h3 class="pub-title">{pub.title}</h3>
-    <p class="pub-authors" set:html={formatAuthors(pub.authors)} />
+    <p class="pub-authors" set:html={pub.authors_html ?? formatAuthors(pub.authors)} />
     {(pub.role || pub.outcome || pub.note) && <p class="pub-note">{[pub.role, pub.outcome, pub.note].filter(Boolean).join(' · ')}</p>}
     {(links.length > 0 || pub.abstract) && (
       <div class="pub-links">
@@ -135,6 +142,28 @@ const statusKind = pub.status
     color: var(--text-faint);
     font-weight: 560;
   }
+  .venue-label {
+    border: 1px solid var(--border-strong);
+    border-radius: 3px;
+    color: var(--text-muted);
+    font-size: .7rem;
+    font-weight: 720;
+    letter-spacing: .05em;
+    line-height: 1.25;
+    padding: .12rem .38rem;
+    text-transform: uppercase;
+  }
+  .venue-label--astar { background: #1d4f7d; border-color: #1d4f7d; color: #fff; }
+  .venue-label--a { background: #e4eef7; border-color: #8aafd0; color: #173f63; }
+  .venue-label--q1 { background: #315f4b; border-color: #315f4b; color: #fff; }
+  .venue-label--q2 { background: #e5f0ea; border-color: #94b7a2; color: #254a39; }
+  .venue-label--b, .venue-label--q3 { background: var(--bg-subtle); }
+  .venue-label--c, .venue-label--q4, .venue-label--unranked { opacity: .76; }
+  .venue-label--track { background: transparent; font-weight: 600; letter-spacing: .025em; text-transform: none; }
+  :global(:root[data-theme='dark']) .venue-label--astar { background: #467fae; border-color: #467fae; color: #fff; }
+  :global(:root[data-theme='dark']) .venue-label--a { background: #18334c; border-color: #527da3; color: #b8d8f3; }
+  :global(:root[data-theme='dark']) .venue-label--q1 { background: #3e735b; border-color: #3e735b; }
+  :global(:root[data-theme='dark']) .venue-label--q2 { background: #1f3d30; border-color: #638f76; color: #b8dec5; }
   .pub-status {
     font-size: 0.72rem;
     font-weight: 640;
@@ -186,6 +215,8 @@ const statusKind = pub.status
     color: var(--text);
     font-weight: 620;
   }
+  .pub-authors :global(a) { color: inherit; text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+  .pub-authors :global(sup) { font-size: .7em; margin-left: 1px; }
   .pub-note {
     font-size: 0.84rem;
     color: var(--accent);

@@ -5,13 +5,13 @@
   "role": "Undergraduate Researcher",
   "research_identity": "Multimodal & Reliable AI",
   "tagline": "Undergraduate Researcher in Multimodal & Reliable AI",
-  "affiliation": "Vietnamese–German University",
+  "affiliation": "Vietnamese-German University",
   "location": "Ho Chi Minh City, Vietnam",
   "cv": "/Phuong_Huu_Vu_Tran_CV.pdf",
   "email": "10425032@student.vgu.edu.vn",
   "short_bio": "I work on multimodal retrieval, reliable retrieval-augmented generation, evidence verification, and uncertainty-aware decision making.",
   "bio": [
-    "I am a second-year <b>Computer Science undergraduate</b> at <i>Vietnamese–German University</i>. My current research focuses on multimodal and reliable AI, including multimodal retrieval, robust retrieval-augmented generation, evidence verification, and uncertainty-aware decision making.",
+    "I am a second-year <b>Computer Science undergraduate</b> at <i>Vietnamese-German University</i>. My current research focuses on multimodal and reliable AI, including multimodal retrieval, robust retrieval-augmented generation, evidence verification, and uncertainty-aware decision making.",
     "I have worked with <b>PAMI Lab</b> and <b>RAISE Lab</b> on multimodal retrieval, video prediction, reliable RAG, and claim verification, and have contributed to accepted work at ICDM 2026, ArgMining/ACL 2026, and the AI City Challenge Workshop at ECCV 2026.",
     "I am interested in extending reliable multimodal methods to healthcare AI. Reach me at <a href=\"mailto:10425032@student.vgu.edu.vn\">10425032@student.vgu.edu.vn</a>."
   ],
