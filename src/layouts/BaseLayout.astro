@@ -1,7 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Sidebar from '../components/Sidebar.astro';
-import MobileBar from '../components/MobileBar.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
@@ -17,17 +16,12 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body id="top">
-    <MobileBar />
-    <div class="shell">
-      <Sidebar />
-      <div class="main">
-        <slot />
-        <Footer />
-      </div>
-    </div>
+    <Header />
+    <main><slot /></main>
+    <Footer />
 
     <script>
-      // Theme toggle (shared by sidebar + mobile bar)
+      // Theme toggle
       document.querySelectorAll('[data-theme-toggle]').forEach((btn) =>
         btn.addEventListener('click', () => {
           const root = document.documentElement;
@@ -37,24 +31,6 @@ const { title, description } = Astro.props;
         })
       );
 
-      // Reveal-on-scroll
-      const els = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const e of entries) {
-              if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                io.unobserve(e.target);
-              }
-            }
-          },
-          { threshold: 0.08 }
-        );
-        els.forEach((el) => io.observe(el));
-      } else {
-        els.forEach((el) => el.classList.add('visible'));
-      }
     </script>
   </body>
 </html>

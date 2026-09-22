@@ -1,8 +1,10 @@
 [
   {
     "name": "UniChatbot",
-    "description": "Smart chatbot with a modern RAG (Retrieval-Augmented Generation) system for university admission counseling.",
-    "tags": ["RAG", "NLP", "Chatbot", "Python"],
+    "subtitle": "RAG-powered university admission assistant",
+    "description": "A university admission assistant with hybrid dense/sparse retrieval, reranking, semantic chunking, document ingestion, and streaming responses.",
+    "highlights": ["Hybrid dense + sparse retrieval", "Semantic chunking and multi-format ingestion", "Reranking and streaming interaction"],
+    "tags": ["RAG", "Hybrid Retrieval", "Qdrant"],
     "links": {
       "github": "https://github.com/BongoJuniorrr/unichatbot",
       "demo": ""
@@ -12,13 +14,15 @@
   },
   {
     "name": "Angel — Virtual Assistant",
-    "description": "A personal virtual assistant application with voice interaction capabilities.",
+    "subtitle": "Voice-enabled personal virtual assistant",
+    "description": "An earlier personal assistant application with voice interaction capabilities.",
     "tags": ["AI Assistant", "Python"],
     "links": {
       "github": "https://github.com/BongoJuniorrr/Angel-Beta",
       "demo": ""
     },
     "image": "",
-    "featured": true
+    "featured": false,
+    "category": "earlier"
   }
 ]

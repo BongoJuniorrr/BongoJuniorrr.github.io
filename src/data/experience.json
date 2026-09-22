@@ -1,34 +1,32 @@
 [
   {
     "role": "Undergraduate Research Assistant",
-    "organization": "VGU AI Lab",
-    "location": "Vietnamese–German University",
-    "start": "",
-    "end": "",
-    "bullets": ["Supervisor: Dr. Cuong Tuan Nguyen"]
+    "organization": "PAMI Lab",
+    "institution": "Vietnamese–German University",
+    "start": "2025-09",
+    "end": null,
+    "supervisor": "Dr. Cuong Tuan Nguyen",
+    "homepage": true,
+    "bullets": ["Co-developed FaLCon, leading its Qwen3-based reranking, uncertainty gating, and late-consensus inference.", "Contributed pipeline design and selected experiments for GeoRoute, a geometry-aware traffic future-frame prediction system."]
   },
   {
     "role": "AI Research & Development Intern",
-    "organization": "Transformers Lab — AI Lab",
-    "location": "",
-    "start": "",
-    "end": "",
-    "bullets": ["Supervisor: Assoc. Prof. Dr. Ngoc-Thanh Dinh"]
+    "organization": "Transformers Lab",
+    "institution": "VBI Academy",
+    "start": "2026-01",
+    "end": null,
+    "supervisor": "Assoc. Prof. Dr. Ngoc-Thanh Dinh",
+    "homepage": true,
+    "bullets": ["Contributed to xfmr-zem, a legal-document RAG system, and an end-to-end corpus-construction pipeline.", "Conduct ongoing research on neuro-symbolic AI."]
   },
   {
     "role": "Undergraduate Research Assistant",
     "organization": "RAISE Lab",
-    "location": "Ho Chi Minh City University of Technology (HCMUT)",
-    "start": "",
-    "end": "",
-    "bullets": ["Supervisor: Dr. Xuan-Bach Le"]
-  },
-  {
-    "role": "Undergraduate Research Assistant",
-    "organization": "Dream AI Lab",
-    "location": "Monash University",
-    "start": "",
-    "end": "",
-    "bullets": ["Supervisor: Prof. Dr. Trung Le"]
+    "institution": "Ho Chi Minh City University of Technology",
+    "start": "2026-01",
+    "end": null,
+    "supervisor": "Dr. Xuan-Bach Le",
+    "homepage": true,
+    "bullets": ["Co-authored LTM-RAG, accepted to the IEEE ICDM 2026 Research Track.", "Developed risk-controlled evidence verification and CREDENCE for noisy, updatable RAG."]
   }
 ]

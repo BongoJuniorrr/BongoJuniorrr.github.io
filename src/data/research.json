@@ -1,0 +1,23 @@
+{
+  "pillars": [
+    {
+      "id": "multimodal",
+      "title": "Multimodal Intelligence",
+      "description": "Vision-language learning, fine-grained multimodal retrieval, and structured reasoning over visual and textual evidence.",
+      "related_work": ["FaLCon", "GeoRoute"]
+    },
+    {
+      "id": "reliable-ai",
+      "title": "Reliable AI",
+      "description": "Robust retrieval, evidence verification, uncertainty calibration, and selective decision rules for systems that know when evidence is insufficient.",
+      "related_work": ["LTM-RAG", "CREDENCE"]
+    },
+    {
+      "id": "structured-reasoning",
+      "title": "Structured Reasoning",
+      "description": "Constraint-aware retrieval, decomposition, debate, and formal decision protocols for complex language tasks.",
+      "related_work": ["LLM-INSTRUCT", "SCoRe"]
+    }
+  ],
+  "emerging_direction": "Healthcare AI — extending reliable multimodal methods to healthcare applications."
+}

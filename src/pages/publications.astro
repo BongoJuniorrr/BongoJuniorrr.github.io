@@ -3,11 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PublicationItem from '../components/PublicationItem.astro';
 import publications from '../data/publications.json';
 
-const byYear = new Map<number, typeof publications>();
-for (const pub of [...publications].sort((a, b) => b.year - a.year)) {
-  if (!byYear.has(pub.year)) byYear.set(pub.year, []);
-  byYear.get(pub.year)!.push(pub);
-}
+const published = publications.filter((pub) => pub.type === 'publication');
+const manuscripts = publications.filter((pub) => pub.type === 'manuscript');
 ---
 
 <BaseLayout title="Publications" description="Academic publications and research contributions.">
@@ -15,17 +12,11 @@ for (const pub of [...publications].sort((a, b) => b.year - a.year)) {
     <header class="page-header">
       <p class="eyebrow">Research</p>
       <h1>Publications</h1>
-      <p class="lede">
-        {publications.length} publication{publications.length === 1 ? '' : 's'}, grouped by year.
-      </p>
+      <p class="lede">Accepted and published research, followed separately by work currently under review.</p>
     </header>
 
-    {[...byYear.entries()].map(([year, pubs]) => (
-      <section class="year-group">
-        <h2 class="year-heading"><span>{year}</span></h2>
-        {pubs.map((pub) => <PublicationItem pub={pub} showYear={false} />)}
-      </section>
-    ))}
+    <section class="year-group"><h2 class="year-heading"><span>Publications</span></h2>{published.map((pub) => <PublicationItem pub={pub} showYear={false} />)}</section>
+    <section class="year-group manuscripts"><h2 class="year-heading"><span>Manuscripts</span></h2><p class="muted manuscript-intro">These works are under review and are not accepted publications.</p>{manuscripts.map((pub) => <PublicationItem pub={pub} showYear={false} />)}</section>
   </div>
 </BaseLayout>
 
@@ -47,4 +38,6 @@ for (const pub of [...publications].sort((a, b) => b.year - a.year)) {
     height: 1px;
     background: linear-gradient(to right, var(--border-strong), transparent);
   }
+  .manuscripts { margin-top: 4rem; }
+  .manuscript-intro { margin: -0.1rem 0 1rem; font-size: .94rem; }
 </style>

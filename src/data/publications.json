@@ -1,79 +1,9 @@
 [
-  {
-    "title": "LLM-INSTRUCT at UZH Shared Task 2026: Constraint-Aware Retrieval and Selective Debate for Paragraph-Level Argument Mining",
-    "authors": ["Phuong Huu Vu Tran", "Long Minh Vo", "Son Nguyen Minh Le", "Hoang Van"],
-    "venue": "ArgMining 2026 · ACL 2026 Workshop",
-    "year": 2026,
-    "status": "Champion",
-    "image": "",
-    "links": {
-      "pdf": "https://aclanthology.org/2026.argmining-1.11.pdf",
-      "anthology": "https://aclanthology.org/2026.argmining-1.11/"
-    },
-    "abstract": "Winning system for the UZH Shared Task 2026 on paragraph-level argument mining in UN and UNESCO resolutions. Using open-weight models limited to 8B parameters, the approach combines constraint-aware retrieval with a selective multi-agent debate to identify argumentative paragraphs and predict argumentative relations.",
-    "selected": true
-  },
-  {
-    "title": "FaLCon: Facet-Anchored Retrieval with Late Consensus for Sim2Real Text-Based Person Anomaly Search",
-    "authors": ["Hieu Dinh Trung Pham", "Phuong Huu Vu Tran", "Thuan Duc Mai", "Son Nguyen Minh Le", "Khang Le Minh", "Hoang Vo", "Minh-Chi Phung", "Huy Minh Nhat Nguyen", "Cuong Tuan Nguyen"],
-    "venue": "AI City Challenge · ECCV 2026 Workshop",
-    "year": 2026,
-    "status": "Accepted",
-    "note": "Co-first author · Rank 7, Track 4",
-    "image": "",
-    "links": {
-      "pdf": "https://arxiv.org/pdf/2608.09474",
-      "arxiv": "https://arxiv.org/abs/2608.09474"
-    },
-    "abstract": "Text-based person anomaly search involves retrieving real-world pedestrian images from detailed natural-language descriptions using models trained primarily on synthetic data. This Sim2Real setting is challenging because visually similar candidates may differ only in subtle actions, object interactions, or appearance attributes, while applying multimodal LLMs to the entire gallery is computationally expensive. We propose an anchor-constrained coarse-to-fine retrieval framework that combines global semantic matching with fine-grained verification: full and concatenated captions act as anchors to preserve recall, while appearance, action, and object facets provide bounded corrective evidence, integrated through robust per-query calibration and soft claim-aware fusion. The candidate pool is refined by a Qwen3 reranker and two semantic verifiers (anomaly-aware cloze completion and multi-agent evidence reasoning), with an uncertainty-gated consensus that reweights the experts on ambiguous queries. On the PAB benchmark the full framework reaches 95.41% mAP@10, 94.44% R@1, and 99.09% R@5.",
-    "selected": true
-  },
-  {
-    "title": "GeoRoute: Geometry-Aware Hybrid Inference for Traffic Future-Frame Prediction",
-    "authors": ["Khang Minh Le", "Hieu Dinh Trung Pham", "Luu Thanh Danh", "Nam-Tien Le", "Hieu Anh Ngo", "Phuong Huu Vu Tran", "Son Nguyen Minh Le", "Nguyen Trong Nghia", "Tu Tran Thi Cam", "Huy Minh Nhat Nguyen", "Cuong Tuan Nguyen"],
-    "venue": "AI City Challenge · ECCV 2026 Workshop",
-    "year": 2026,
-    "status": "Accepted",
-    "note": "Co-author · Rank 5, Track 5",
-    "image": "",
-    "links": {
-      "pdf": "https://arxiv.org/pdf/2608.09493",
-      "arxiv": "https://arxiv.org/abs/2608.09493"
-    },
-    "abstract": "Long-horizon future-frame prediction matters for autonomous driving, traffic surveillance, and intelligent transportation, yet suffers from temporal ghosting, geometry drift, and inconsistent object motion. Latent video diffusion models produce impressive visuals but destabilize structured traffic scenes over long horizons. We present a training-free inference framework that stabilizes reliable static structure in pretrained video predictions through multi-frame temporal context and view-conditioned routing. For front-camera videos, a multi-frame depth-layered renderer projects static geometry from observed history frames while preserving dynamic regions from the generative base model; for heterogeneous views, a frozen vision-language model infers a coarse camera group and selects a specialized motion predictor. Requiring neither retraining nor fine-tuning, the framework is validated on the AI City Challenge Track 5 benchmark, achieving competitive performance among the top-ranked teams.",
-    "selected": false
-  },
-  {
-    "title": "SCoRe: Smoothed Certified Release for Prompt Repair",
-    "authors": ["Phuong Huu Vu Tran", "Thuan Duc Mai", "Phat T. Tran-Truong", "Son Ha Xuạn", "Xuan-Bach Le"],
-    "venue": "NeurIPS 2026 · CORE A*",
-    "year": 2026,
-    "status": "Under review",
-    "image": "",
-    "links": {},
-    "abstract": "",
-    "selected": true
-  },
-  {
-    "title": "Risk-Controlled Evidence-Regime Verification for Noisy, Updatable RAG Fact Checking: A Benchmark and a Conformal Answer/Fallback/Abstain Protocol",
-    "authors": ["Phuong Huu Vu Tran", "Thuan Duc Mai", "Hieu Dinh Trung Pham", "Xuan-Bach Le"],
-    "venue": "Journal of Artificial Intelligence Research (JAIR) · Q1",
-    "year": 2026,
-    "status": "Under review",
-    "image": "",
-    "links": {},
-    "abstract": "",
-    "selected": true
-  },
-  {
-    "title": "CREDENCE: Claim Reduction for Decomposition-Enhanced Credibility — Semantic Metrics and Convergence Analysis",
-    "authors": ["Phuong Huu Vu Tran", "Thuan Duc Mai", "Xuan-Bach Le"],
-    "venue": "Language Resources and Evaluation (LRE) · Q1",
-    "year": 2026,
-    "status": "Under review",
-    "image": "",
-    "links": {},
-    "abstract": "",
-    "selected": false
-  }
+  {"id":"ltm-rag","title":"LTM-RAG: Longitudinal Trust Mining for Poison-Resilient Retrieval-Augmented Generation","authors":["Thi-Hong-Cuc Le","Phuong Huu Vu Tran","Thuan Mai Duc","Xuan-Bach Le"],"venue":"IEEE International Conference on Data Mining (ICDM 2026) · Research Track","year":2026,"type":"publication","status":"Accepted","role":"Second author","selected":true,"links":{},"summary":"A longitudinal trust-mining framework for retrieval-augmented generation that remains resilient when retrieved evidence is poisoned.","abstract":"LTM-RAG studies how retrieval-augmented systems can identify and manage unreliable evidence over time when the retrieval corpus is subject to poisoning."},
+  {"id":"llm-instruct","title":"LLM-INSTRUCT at UZH Shared Task 2026: Constraint-Aware Retrieval and Selective Debate for Paragraph-Level Argument Mining","authors":["Phuong Huu Vu Tran","Long Minh Vo","Son Nguyen Minh Le","Hoang Van"],"venue":"ArgMining 2026 · ACL 2026 Workshop","year":2026,"type":"publication","status":"Published","role":"First author","outcome":"Champion · 1st Place","selected":true,"links":{"paper":"https://aclanthology.org/2026.argmining-1.11.pdf","anthology":"https://aclanthology.org/2026.argmining-1.11/"},"summary":"Constraint-aware retrieval and selective debate for paragraph-level argument mining in UN and UNESCO resolutions.","abstract":"Winning system for the UZH Shared Task 2026. Under an 8B open-weight constraint, it combines retrieval with selective multi-agent debate to identify argumentative paragraphs and predict their relations."},
+  {"id":"falcon","title":"FaLCon: Facet-Anchored Retrieval with Late Consensus for Sim2Real Text-Based Person Anomaly Search","authors":["Hieu Dinh Trung Pham","Phuong Huu Vu Tran","Thuan Duc Mai","Son Nguyen Minh Le","Khang Le Minh","Hoang Vo","Minh-Chi Phung","Huy Minh Nhat Nguyen","Cuong Tuan Nguyen"],"venue":"AI City Challenge Workshop · ECCV 2026","year":2026,"type":"publication","status":"Accepted","role":"Co-first author","outcome":"95.41% mAP@10 on PAB","selected":true,"links":{"paper":"https://arxiv.org/pdf/2608.09474","arxiv":"https://arxiv.org/abs/2608.09474"},"summary":"Facet-anchored coarse-to-fine retrieval with Qwen3 reranking and uncertainty-gated late consensus for Sim2Real person anomaly search.","abstract":"FaLCon combines global semantic matching, facet-level corrective evidence, Qwen3 reranking, and uncertainty-gated consensus to retrieve real-world pedestrian images from detailed text descriptions."},
+  {"id":"georoute","title":"GeoRoute: Geometry-Aware Hybrid Inference for Traffic Future-Frame Prediction","authors":["Khang Minh Le","Hieu Dinh Trung Pham","Luu Thanh Danh","Nam-Tien Le","Hieu Anh Ngo","Phuong Huu Vu Tran","Son Nguyen Minh Le","Nguyen Trong Nghia","Tu Tran Thi Cam","Huy Minh Nhat Nguyen","Cuong Tuan Nguyen"],"venue":"AI City Challenge Workshop · ECCV 2026","year":2026,"type":"publication","status":"Accepted","role":"Co-author","selected":true,"links":{"paper":"https://arxiv.org/pdf/2608.09493","arxiv":"https://arxiv.org/abs/2608.09493"},"summary":"A geometry-aware, training-free hybrid inference framework for stable long-horizon traffic future-frame prediction.","abstract":"GeoRoute stabilizes static geometry in pretrained video predictions using temporal context, depth-layered rendering, and view-conditioned motion routing."},
+  {"id":"risk-controlled-rag","title":"Risk-Controlled Evidence-Regime Verification for Noisy, Updatable RAG Fact Checking: A Benchmark and a Conformal Answer/Fallback/Abstain Protocol","authors":["Phuong Huu Vu Tran","Thuan Duc Mai","Hieu Dinh Trung Pham","Xuan-Bach Le"],"venue":"Journal of Artificial Intelligence Research (JAIR)","year":2026,"type":"manuscript","status":"Under review","role":"First author","selected":false,"links":{},"summary":"Risk-controlled evidence verification for noisy and updatable RAG using conformal Answer/Fallback/Abstain decisions.","abstract":""},
+  {"id":"credence","title":"CREDENCE: Claim Reduction for Decomposition & Enhanced Credibility – Semantic Metrics and Convergence Analysis","authors":["Phuong Huu Vu Tran","Thuan Duc Mai","Xuan-Bach Le"],"venue":"Language Resources and Evaluation (LRE)","year":2026,"type":"manuscript","status":"Under review","role":"First author","selected":false,"links":{},"summary":"Verified claim decomposition and repair with the Semantic-F1 metric, convergence analysis, and cross-domain evaluation.","abstract":""},
+  {"id":"score","title":"SCoRe: Smoothed Certified Release for Prompt Repair","authors":[],"venue":"NeurIPS 2026","year":2026,"type":"manuscript","status":"Under review","role":"Co-first author","selected":false,"links":{},"summary":"A smoothed certified release approach for prompt repair.","abstract":""}
 ]

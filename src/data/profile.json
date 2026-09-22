@@ -1,22 +1,25 @@
 {
   "name": "Phuong Huu Vu Tran",
   "name_variants": ["Phuong Huu Vu Tran", "Tran, P. H. V.", "P. H. V. Tran", "P.H.V. Tran", "Phuong H. V. Tran", "Tran Huu Vu Phuong"],
-  "tagline": "Computer Science Undergraduate · AI/ML & NLP Research",
-  "affiliation": "Vietnamese–German University (VGU)",
+  "short_name": "Tran",
+  "role": "Undergraduate Researcher",
+  "research_identity": "Multimodal & Reliable AI",
+  "tagline": "Undergraduate Researcher in Multimodal & Reliable AI",
+  "affiliation": "Vietnamese–German University",
   "location": "Ho Chi Minh City, Vietnam",
-  "avatar": "/images/avatar.png",
-  "cv": "/cv.pdf",
-  "email": "tranhuuvuphuong218@gmail.com",
+  "cv": "/Phuong_Huu_Vu_Tran_CV.pdf",
+  "email": "10425032@student.vgu.edu.vn",
+  "short_bio": "I work on multimodal retrieval, reliable retrieval-augmented generation, evidence verification, and uncertainty-aware decision making.",
   "bio": [
-    "I am a rising second-year <b>Computer Science undergraduate</b> at the <i>Vietnamese–German University (VGU)</i> (GPA 9.0/10), a programme taught in English in cooperation with German partner universities.",
-    "My research spans <b>natural language processing</b>, <b>large language models &amp; LLM agents</b>, <b>AI for software engineering</b>, and <b>data mining</b>. I have first-author manuscripts under review at CORE A* venues (NeurIPS, ICSE, ICDM) and Q1 journals (JAIR, LRE), a peer-reviewed workshop publication, and a shared-task championship.",
-    "I am actively engaged across four research labs in Vietnam and abroad, and I enjoy building reliable, verifiable AI systems. Reach me at <a href=\"mailto:10425032@student.vgu.edu.vn\">10425032@student.vgu.edu.vn</a>."
+    "I am a second-year <b>Computer Science undergraduate</b> at <i>Vietnamese–German University</i>. My current research focuses on multimodal and reliable AI, including multimodal retrieval, robust retrieval-augmented generation, evidence verification, and uncertainty-aware decision making.",
+    "I have worked with <b>PAMI Lab</b> and <b>RAISE Lab</b> on multimodal retrieval, video prediction, reliable RAG, and claim verification, and have contributed to accepted work at ICDM 2026, ArgMining/ACL 2026, and the AI City Challenge Workshop at ECCV 2026.",
+    "I am interested in extending reliable multimodal methods to healthcare AI. Reach me at <a href=\"mailto:10425032@student.vgu.edu.vn\">10425032@student.vgu.edu.vn</a>."
   ],
   "social": [
     { "platform": "scholar", "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=EDNDwBEAAAAJ&hl=en" },
     { "platform": "orcid", "label": "ORCID", "url": "https://orcid.org/0009-0003-9433-473X" },
     { "platform": "github", "label": "GitHub", "url": "https://github.com/BongoJuniorrr" },
     { "platform": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/tranhuuvuphuong/" },
-    { "platform": "email", "label": "Email", "url": "mailto:tranhuuvuphuong218@gmail.com" }
+    { "platform": "email", "label": "Email", "url": "mailto:10425032@student.vgu.edu.vn" }
   ]
 }

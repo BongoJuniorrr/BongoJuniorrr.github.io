@@ -4,17 +4,16 @@ import ProjectCard from '../components/ProjectCard.astro';
 import projects from '../data/projects.json';
 ---
 
-<BaseLayout title="Projects" description="Research and personal software projects.">
-  <div class="container-wide">
+<BaseLayout title="Projects" description="Engineering and research projects by Phuong Huu Vu Tran.">
+  <div class="page">
     <header class="page-header">
       <p class="eyebrow">Portfolio</p>
-      <h1>Projects</h1>
-      <p class="lede">Research and personal software projects.</p>
+      <h1>Engineering &amp; Research Projects</h1>
+      <p class="lede">Selected systems that complement my research work.</p>
     </header>
 
-    <div class="project-grid">
-      {projects.map((p) => <ProjectCard project={p} />)}
-    </div>
+    <section><h2 class="project-group">Selected Projects</h2><div class="project-grid">{projects.filter((p) => p.featured).map((p) => <ProjectCard project={p} />)}</div></section>
+    <section class="earlier"><h2 class="project-group">Earlier Projects</h2><div class="project-grid">{projects.filter((p) => !p.featured).map((p) => <ProjectCard project={p} />)}</div></section>
   </div>
 </BaseLayout>
 
@@ -25,4 +24,6 @@ import projects from '../data/projects.json';
     gap: 1.1rem;
     margin-top: 1rem;
   }
+  .project-group { font-size: 1.55rem; margin-bottom: 1rem; }
+  .earlier { margin-top: 3.5rem; }
 </style>

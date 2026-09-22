@@ -13,18 +13,22 @@ interface Props {
     image?: string;
     links?: Record<string, string>;
     abstract?: string;
+    role?: string;
+    outcome?: string;
   };
   showYear?: boolean;
 }
 const { pub, showYear = true } = Astro.props;
 
 const linkIcons: Record<string, string> = {
+  paper: 'pdf',
   pdf: 'pdf',
   arxiv: 'arxiv',
   code: 'code',
   anthology: 'book',
 };
 const linkLabels: Record<string, string> = {
+  paper: 'Paper',
   pdf: 'PDF',
   arxiv: 'arXiv',
   code: 'Code',
@@ -61,7 +65,7 @@ const statusKind = pub.status
     </div>
     <h3 class="pub-title">{pub.title}</h3>
     <p class="pub-authors" set:html={formatAuthors(pub.authors)} />
-    {pub.note && <p class="pub-note">{pub.note}</p>}
+    {(pub.role || pub.outcome || pub.note) && <p class="pub-note">{[pub.role, pub.outcome, pub.note].filter(Boolean).join(' · ')}</p>}
     {(links.length > 0 || pub.abstract) && (
       <div class="pub-links">
         {links.map(([kind, url]) => (
@@ -122,7 +126,7 @@ const statusKind = pub.status
     color: var(--accent);
     background: var(--accent-soft);
     border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
-    border-radius: 999px;
+    border-radius: 3px;
     padding: 0.12rem 0.65rem;
   }
   .pub-year {
@@ -136,7 +140,7 @@ const statusKind = pub.status
     font-weight: 640;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    border-radius: 999px;
+    border-radius: 3px;
     padding: 0.12rem 0.6rem;
     border: 1px solid transparent;
   }

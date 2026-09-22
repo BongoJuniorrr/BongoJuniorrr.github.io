@@ -2,438 +2,70 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHead from '../components/SectionHead.astro';
 import PublicationItem from '../components/PublicationItem.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import Icon from '../components/Icon.astro';
 import { formatDate } from '../lib/utils';
-
 import profile from '../data/profile.json';
-import news from '../data/news.json';
+import research from '../data/research.json';
 import publications from '../data/publications.json';
-import awards from '../data/awards.json';
+import news from '../data/news.json';
 import experience from '../data/experience.json';
-import education from '../data/education.json';
-import projects from '../data/projects.json';
-import skills from '../data/skills.json';
 
-const recentNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
-const selectedPubs = publications.filter((p) => p.selected);
-const featuredProjects = projects.filter((p) => p.featured);
+const selectedWork = publications.filter((work) => work.selected && work.type === 'publication');
+const recent = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+const homepageExperience = experience.filter((item) => item.homepage).sort((a, b) => b.start.localeCompare(a.start));
+const social = profile.social.filter((item) => ['scholar', 'github', 'linkedin', 'email'].includes(item.platform));
 ---
 
 <BaseLayout>
-  <!-- 01 · About -->
-  <section id="about" class="section">
-    <div class="container">
-      <SectionHead num="01" title="About" />
-      <div class="bio reveal">
-        {profile.bio.map((p) => <p set:html={p} />)}
-      </div>
+  <section class="hero page">
+    <p class="eyebrow">{profile.name}</p>
+    <h1>{profile.role}<br />in {profile.research_identity}</h1>
+    <p class="hero-statement">{profile.short_bio}</p>
+    <p class="hero-affiliation">Vietnamese–German University · PAMI Lab · RAISE Lab</p>
+    <div class="hero-links">
+      {social.map((item) => <a href={item.url} target={item.platform === 'email' ? undefined : '_blank'} rel="noopener">{item.label} <span aria-hidden="true">↗</span></a>)}
+      <a href={profile.cv} target="_blank" rel="noopener">CV <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
-  <!-- 02 · News -->
-  <section id="news" class="section">
-    <div class="container">
-      <SectionHead num="02" title="News" />
-      <ul class="news-list">
-        {recentNews.map((n) => (
-          <li class="news-item reveal">
-            <span class="news-date">{formatDate(n.date)}</span>
-            <span class="news-text">
-              <span set:html={n.text} />
-              {n.link && (
-                <a href={n.link} target="_blank" rel="noopener" class="news-link" aria-label="Related link">
-                  <Icon name="external" size={13} />
-                </a>
-              )}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <p class="view-all reveal">
-        <a href="/news/">View all news</a>
-      </p>
+  <section id="research" class="section"><div class="page">
+    <SectionHead num="01" title="Research" />
+    <div class="pillar-grid">
+      {research.pillars.map((pillar) => <article class="pillar"><p class="pillar-number">{pillar.related_work.join(' · ')}</p><h3>{pillar.title}</h3><p>{pillar.description}</p></article>)}
     </div>
-  </section>
+    <p class="emerging"><strong>Emerging direction — </strong>{research.emerging_direction}</p>
+  </div></section>
 
-  <!-- 03 · Research Interests -->
-  <section id="research" class="section">
-    <div class="container">
-      <SectionHead num="03" title="Research Interests" />
-      <div class="interest-grid">
-        {skills.research_interests.map((i) => (
-          <div class="interest-item reveal">
-            <h3 class="interest-name">{i.name}</h3>
-            {i.description && <p class="interest-desc">{i.description}</p>}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <section id="work" class="section"><div class="page">
+    <SectionHead num="02" title="Selected Work" />
+    <div class="work-list">{selectedWork.map((work) => <PublicationItem pub={work} />)}</div>
+    <p class="view-all"><a href="/publications/">View all publications and manuscripts</a></p>
+  </div></section>
 
-  <!-- 04 · Education -->
-  <section id="education" class="section">
-    <div class="container">
-      <SectionHead num="04" title="Education" />
-      <ul class="edu-list">
-        {education.map((e) => (
-          <li class="edu-item reveal">
-            <span class="edu-years">{e.years}</span>
-            <div class="edu-body">
-              <h3 class="edu-degree">{e.degree}</h3>
-              <p class="edu-school"><em>{e.school}</em></p>
-              {e.details && <p class="edu-details muted">{e.details}</p>}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
+  <section id="recent" class="section"><div class="page">
+    <SectionHead num="03" title="Recent" />
+    <ul class="recent-list">{recent.map((item) => <li><time>{formatDate(item.date)}</time><span set:html={item.text} />{item.link && <a class="recent-link" href={item.link} target="_blank" rel="noopener" aria-label="Open related item"><Icon name="external" size={14} /></a>}</li>)}</ul>
+  </div></section>
 
-  <!-- 05 · Selected publications -->
-  <section id="publications" class="section">
-    <div class="container">
-      <SectionHead num="05" title="Selected Publications" />
-      {selectedPubs.map((pub) => <PublicationItem pub={pub} />)}
-      <p class="view-all reveal">
-        <a href="/publications/">View all publications</a>
-      </p>
-    </div>
-  </section>
+  <section id="experience" class="section"><div class="page">
+    <SectionHead num="04" title="Research Experience" />
+    <div class="experience-list">{homepageExperience.map((item) => <article class="experience-row"><time>{formatDate(item.start)}—Present</time><div><h3>{item.role}</h3><p><em>{item.organization}</em> · {item.institution}</p><p class="muted">Supervisor: {item.supervisor}</p></div></article>)}</div>
+    <p class="view-all"><a href="/about/">More about my background</a></p>
+  </div></section>
 
-  <!-- 06 · Experience -->
-  <section id="experience" class="section">
-    <div class="container">
-      <SectionHead num="06" title="Experience" />
-      <div class="timeline">
-        {experience.map((exp) => (
-          <div class="timeline-item reveal">
-            <div class="timeline-dot" />
-            <div class="timeline-body">
-              {(exp.start || exp.end) && (
-                <p class="exp-dates">{[exp.start, exp.end].filter(Boolean).join(' — ')}</p>
-              )}
-              <h3 class="exp-role">{exp.role}</h3>
-              <p class="exp-org">
-                <em>{exp.organization}</em>
-                {exp.location && <span class="muted"> · {exp.location}</span>}
-              </p>
-              {exp.bullets && exp.bullets.length > 0 && (
-                <ul class="exp-bullets">
-                  {exp.bullets.map((b) => <li set:html={b} />)}
-                </ul>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 · Selected projects -->
-  <section id="projects" class="section">
-    <div class="container-wide">
-      <SectionHead num="07" title="Selected Projects" />
-      <div class="project-grid">
-        {featuredProjects.map((p) => <ProjectCard project={p} />)}
-      </div>
-      <p class="view-all reveal">
-        <a href="/projects/">View all projects</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- 08 · Awards -->
-  <section id="awards" class="section">
-    <div class="container">
-      <SectionHead num="08" title="Honors & Awards" />
-      <ul class="awards-list">
-        {awards.map((a) => (
-          <li class="award-item reveal">
-            <span class="award-year">{a.year}</span>
-            <div>
-              <p class="award-title">{a.title}</p>
-              <p class="muted award-org">{a.organization}</p>
-              {a.description && <p class="award-desc muted">{a.description}</p>}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- 09 · Skills -->
-  <section id="skills" class="section">
-    <div class="container">
-      <SectionHead num="09" title="Skills" />
-      <ul class="skill-list">
-        {skills.skill_groups.map((g) => (
-          <li class="skill-row reveal">
-            <span class="skill-category">{g.category}</span>
-            <span class="skill-chips">
-              {g.items.map((i) => <span class="chip">{i}</span>)}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section contact-section">
-    <div class="container">
-      <div class="contact-panel reveal">
-        <p class="eyebrow">Contact</p>
-        <h2 class="contact-heading">Get in touch</h2>
-        <p class="muted contact-blurb">
-          Feel free to reach out for research collaboration, questions, or just to say hi.
-        </p>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href={`mailto:${profile.email}`}>
-            <Icon name="email" size={16} /> {profile.email}
-          </a>
-          <a class="btn btn-ghost" href={profile.cv} target="_blank" rel="noopener">
-            <Icon name="pdf" size={16} /> Download CV
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section id="contact" class="section"><div class="page contact">
+    <p class="eyebrow">Contact</p><h2>Research, collaboration,<br />or a good technical question.</h2>
+    <p>Feel free to reach out about research collaboration, multimodal AI, reliable RAG, or related work.</p>
+    <a class="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a>
+  </div></section>
 </BaseLayout>
 
 <style>
-  .bio p { margin-bottom: 1rem; }
-  .bio :global(b), .bio :global(strong) { font-weight: 620; }
-
-  /* News */
-  .news-list { list-style: none; }
-  .news-item {
-    display: flex;
-    gap: 1.4rem;
-    padding: 0.7rem 0;
-    border-bottom: 1px dashed var(--border);
-  }
-  .news-item:last-child { border-bottom: none; }
-  .news-date {
-    flex: 0 0 5.6rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-    padding-top: 0.24rem;
-    font-variant-numeric: tabular-nums;
-  }
-  .news-text { font-size: 0.97rem; }
-  .news-link {
-    display: inline-block;
-    vertical-align: -2px;
-    margin-left: 0.25rem;
-    line-height: 0;
-  }
-
-  /* Research interests — no boxes, accent tick + text */
-  .interest-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 1.5rem 2.4rem;
-  }
-  .interest-item {
-    position: relative;
-    padding-left: 1.05rem;
-  }
-  .interest-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.42rem;
-    bottom: 0.3rem;
-    width: 3px;
-    border-radius: 3px;
-    background: color-mix(in srgb, var(--accent) 55%, transparent);
-  }
-  .interest-name { font-size: 1.1rem; }
-  .interest-desc {
-    font-size: 0.91rem;
-    color: var(--text-muted);
-    margin-top: 0.25rem;
-  }
-
-  /* Education — de-boxified rows */
-  .edu-list { list-style: none; }
-  .edu-item {
-    display: flex;
-    gap: 1.4rem;
-    padding: 1.05rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .edu-item:last-child { border-bottom: none; }
-  .edu-years {
-    flex: 0 0 8.6rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-    padding-top: 0.3rem;
-    font-variant-numeric: tabular-nums;
-  }
-  .edu-degree { font-size: 1.12rem; }
-  .edu-school {
-    font-size: 0.95rem;
-    margin-top: 0.15rem;
-  }
-  .edu-school em {
-    font-family: var(--font-serif);
-    font-size: 1.04em;
-  }
-  .edu-details {
-    font-size: 0.89rem;
-    margin-top: 0.3rem;
-  }
-
-  /* Experience timeline */
-  .timeline {
-    position: relative;
-    padding-left: 1.55rem;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.3rem;
-    top: 0.5rem;
-    bottom: 0.5rem;
-    width: 2px;
-    border-radius: 2px;
-    background: linear-gradient(to bottom, var(--accent), var(--border) 85%);
-    opacity: 0.5;
-  }
-  .timeline-item {
-    position: relative;
-    padding-bottom: 2.1rem;
-  }
-  .timeline-item:last-child { padding-bottom: 0.4rem; }
-  .timeline-dot {
-    position: absolute;
-    left: -1.55rem;
-    top: 0.5rem;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 2.5px solid var(--accent);
-  }
-  .exp-dates {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-    margin-bottom: 0.15rem;
-  }
-  .exp-role { font-size: 1.12rem; }
-  .exp-org {
-    font-size: 0.95rem;
-    margin-top: 0.15rem;
-  }
-  .exp-org em {
-    font-family: var(--font-serif);
-    font-size: 1.04em;
-  }
-  .exp-bullets {
-    margin-top: 0.55rem;
-    padding-left: 1.15rem;
-    font-size: 0.92rem;
-    color: var(--text-muted);
-  }
-  .exp-bullets li { margin-bottom: 0.3rem; }
-  .exp-bullets li::marker { color: var(--accent); }
-
-  /* Projects */
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 1.15rem;
-  }
-
-  /* Awards */
-  .awards-list { list-style: none; }
-  .award-item {
-    display: flex;
-    gap: 1.4rem;
-    padding: 0.8rem 0;
-    border-bottom: 1px dashed var(--border);
-  }
-  .award-item:last-child { border-bottom: none; }
-  .award-year {
-    flex: 0 0 3.6rem;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.08rem;
-    font-weight: 560;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-  }
-  .award-title { font-weight: 580; }
-  .award-org { font-size: 0.88rem; }
-  .award-desc { font-size: 0.88rem; margin-top: 0.15rem; }
-
-  /* Skills — de-boxified definition rows */
-  .skill-list { list-style: none; }
-  .skill-row {
-    display: flex;
-    align-items: baseline;
-    gap: 1.4rem;
-    padding: 0.85rem 0;
-    border-bottom: 1px dashed var(--border);
-  }
-  .skill-row:last-child { border-bottom: none; }
-  .skill-category {
-    flex: 0 0 10.5rem;
-    font-family: var(--font-serif);
-    font-size: 1.02rem;
-    font-weight: 590;
-  }
-  .skill-chips {
-    display: flex;
-    gap: 0.45rem;
-    flex-wrap: wrap;
-  }
-
-  /* Contact */
-  .contact-section { padding-bottom: 1rem; }
-  .contact-panel {
-    position: relative;
-    text-align: center;
-    padding: 2.8rem 1.6rem 3rem;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    background:
-      radial-gradient(28rem 14rem at 50% -4rem, var(--accent-glow), transparent 70%),
-      var(--bg-surface);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-  .contact-heading {
-    font-size: 1.9rem;
-    margin-bottom: 0.5rem;
-  }
-  .contact-blurb {
-    margin-bottom: 1.5rem;
-    max-width: 28rem;
-    margin-inline: auto;
-  }
-  .contact-actions {
-    display: flex;
-    gap: 0.8rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  @media (max-width: 640px) {
-    .news-item, .award-item, .edu-item { gap: 0.9rem; }
-    .edu-item, .skill-row { flex-direction: column; gap: 0.3rem; }
-    .edu-years { padding-top: 0; }
-  }
+  .hero { min-height:clamp(34rem,70vh,46rem); padding:clamp(6rem,13vh,9rem) 0 5rem; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; }
+  .hero h1 { max-width:850px; margin:.8rem 0 1.4rem; font-size:clamp(3.1rem,7vw,6.4rem); } .hero-statement { max-width:630px; font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.55; } .hero-affiliation { margin-top:1.2rem; color:var(--text-muted); } .hero-links { display:flex; flex-wrap:wrap; gap:.55rem 1rem; margin-top:2rem; } .hero-links a { font-size:.9rem; font-weight:650; text-decoration:none; }
+  .pillar-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; } .pillar { padding-top:1rem; border-top:2px solid var(--accent); } .pillar-number { min-height:1.4rem; color:var(--accent); font-size:.76rem; font-weight:700; letter-spacing:.05em; } .pillar h3 { font-size:1.45rem; margin:.4rem 0 .6rem; } .pillar p:not(.pillar-number) { color:var(--text-muted); font-size:.95rem; } .emerging { margin-top:2.3rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--text-muted); }
+  .work-list { max-width:850px; } .recent-list { list-style:none; max-width:850px; } .recent-list li { display:grid; grid-template-columns:7rem 1fr auto; gap:1rem; padding:.85rem 0; border-bottom:1px solid var(--border); } .recent-list time,.experience-row time { color:var(--accent); font-size:.8rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; } .recent-link { line-height:0; }
+  .experience-list { max-width:850px; } .experience-row { display:grid; grid-template-columns:9rem 1fr; gap:1.5rem; padding:1.25rem 0; border-bottom:1px solid var(--border); } .experience-row h3 { font-size:1.22rem; } .experience-row p { margin-top:.2rem; } .experience-row em { font-family:var(--font-serif); }
+  .contact { padding-bottom:2rem; } .contact h2 { margin:.7rem 0 1rem; font-size:clamp(2.3rem,4vw,4rem); } .contact > p { max-width:560px; color:var(--text-muted); } .contact-email { display:inline-block; margin-top:1.3rem; font-size:1.15rem; font-weight:650; }
+  @media (max-width:760px) { .hero { min-height:32rem; } .pillar-grid { grid-template-columns:1fr; gap:1.5rem; } .recent-list li,.experience-row { grid-template-columns:1fr; gap:.25rem; } .recent-list time { margin-bottom:.1rem; } }
 </style>

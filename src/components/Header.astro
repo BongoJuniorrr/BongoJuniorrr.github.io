@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+
+const path = Astro.url.pathname;
+const links = [
+  { href: '/#research', label: 'Research' },
+  { href: '/publications/', label: 'Publications' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/about/', label: 'About' },
+];
+---
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/" aria-label={`${profile.name} — home`}>{profile.short_name}<span>.</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {links.map((link) => <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>)}
+      <a href={profile.cv} target="_blank" rel="noopener">CV <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-social" href={profile.social.find((s) => s.platform === 'scholar')?.url} target="_blank" rel="noopener" aria-label="Google Scholar"><Icon name="scholar" size={17} /></a>
+      <a class="nav-social" href={profile.social.find((s) => s.platform === 'github')?.url} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={17} /></a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle color theme"><span class="icon-sun"><Icon name="sun" size={16} /></span><span class="icon-moon"><Icon name="moon" size={16} /></span></button>
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    <a href={profile.cv} target="_blank" rel="noopener">CV ↗</a>
+  </nav>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(12px); }
+  .nav-wrap { max-width: var(--content-width); height: 4.25rem; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .brand { font-family: var(--font-serif); color: var(--text); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.04em; }
+  .brand:hover { text-decoration: none; } .brand span { color: var(--accent); }
+  .desktop-nav { display: flex; align-items: center; gap: 1.45rem; margin-left: auto; }
+  .desktop-nav a { color: var(--text-muted); font-size: .9rem; font-weight: 540; } .desktop-nav a:hover, .desktop-nav a[aria-current='page'] { color: var(--accent); text-decoration: none; }
+  .nav-actions { display: flex; align-items: center; gap: .55rem; }
+  .nav-social, .theme-toggle, .menu-toggle { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; color: var(--text-muted); background: none; border: 0; cursor: pointer; }
+  .nav-social:hover, .theme-toggle:hover { color: var(--accent); } .icon-sun, .icon-moon { display: none; line-height: 0; } :global(:root[data-theme='dark']) .icon-sun, :global(:root[data-theme='light']) .icon-moon { display: block; }
+  .menu-toggle, .mobile-nav { display: none; } .menu-toggle { gap: 4px; align-content: center; } .menu-toggle span { width: 18px; height: 1px; background: currentColor; }
+  @media (max-width: 720px) { .nav-wrap { height: 3.8rem; padding: 0 1rem; } .desktop-nav, .nav-social { display: none; } .menu-toggle { display: grid; } .mobile-nav { padding: .5rem 1rem 1rem; border-top: 1px solid var(--border); } .mobile-nav.open { display: grid; grid-template-columns: 1fr 1fr; gap: .1rem .8rem; } .mobile-nav a { padding: .6rem 0; color: var(--text-muted); } }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('.mobile-nav');
+  toggle?.addEventListener('click', () => { const isOpen = nav?.classList.toggle('open') ?? false; toggle.setAttribute('aria-expanded', String(isOpen)); });
+  document.querySelectorAll('.mobile-nav a').forEach((link) => link.addEventListener('click', () => { nav?.classList.remove('open'); toggle?.setAttribute('aria-expanded', 'false'); }));
+</script>
