@@ -1,38 +1,14 @@
 {
   "research_interests": [
-    {
-      "name": "Natural Language Processing",
-      "description": "Argument mining, fact verification, and reliable text understanding."
-    },
-    {
-      "name": "LLMs & LLM Agents",
-      "description": "Retrieval-augmented, debate-based, and instruction-tuned language systems."
-    },
-    {
-      "name": "AI for Software Engineering",
-      "description": "Applying LLMs to program repair and software analysis."
-    },
-    {
-      "name": "Data Mining",
-      "description": "Extracting structure and knowledge from large, noisy corpora."
-    }
+    {"name":"Reliable AI","description":"Evidence verification, uncertainty calibration, and trustworthy model behavior under noisy or evolving knowledge."},
+    {"name":"Multimodal Learning","description":"Vision-language models, CLIP-based retrieval, and video prediction."},
+    {"name":"Neuro-symbolic Reasoning","description":"Executable evidence and source-to-response certification for reliable reasoning."}
   ],
   "skill_groups": [
-    {
-      "category": "Programming",
-      "items": ["Python", "C++ (OOP)"]
-    },
-    {
-      "category": "ML / DL",
-      "items": ["PyTorch", "Deep-learning fine-tuning (EVA-02 CLIP)", "LLMs", "Retrieval-Augmented Generation (RAG)", "NLP", "Neuro-symbolic methods"]
-    },
-    {
-      "category": "Tools",
-      "items": ["LaTeX / XeLaTeX", "Git", "Linux"]
-    },
-    {
-      "category": "Languages",
-      "items": ["Vietnamese (Native)", "English (IELTS 6.5)", "German (B1)"]
-    }
+    {"category":"Programming & ML","items":["Python","C++","PyTorch","Hugging Face Transformers"]},
+    {"category":"Reliable AI & LLMs","items":["RAG","Dense retrieval","Reranking","Uncertainty calibration","Conformal prediction","vLLM"]},
+    {"category":"Multimodal Learning","items":["Vision-language models","CLIP-based retrieval","Video prediction"]},
+    {"category":"Research & Systems","items":["Linux","Git","Docker","Slurm","LaTeX/XeLaTeX"]},
+    {"category":"Languages","items":["Vietnamese (Native)","English (IELTS Academic 6.5, CEFR B2)","German (Conversational)"]}
   ]
 }

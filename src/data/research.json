@@ -1,8 +1,8 @@
 {
   "pillars": [
-    {"id":"multimodal","title":"Multimodal Intelligence","description":"Vision-language learning, fine-grained multimodal retrieval, and structured reasoning over visual and textual evidence.","related_work":["FaLCon","GeoRoute"]},
-    {"id":"reliable-ai","title":"Reliable AI","description":"Robust retrieval, evidence verification, uncertainty calibration, and selective decision rules for systems that know when evidence is insufficient.","related_work":["LTM-RAG","CREDENCE","RAVEN"]},
-    {"id":"structured-reasoning","title":"Structured Reasoning","description":"Constraint-aware retrieval, decomposition, debate, and formal decision protocols for complex language tasks.","related_work":["LLM-INSTRUCT","SCoRe"]}
+    {"id":"multimodal","title":"Multimodal Learning","description":"Multimodal retrieval, vision-language models, and video prediction for systems that reason over visual and textual evidence.","related_work":["FaLCon","GeoRoute"]},
+    {"id":"reliable-ai","title":"Reliable AI","description":"Evidence verification, robust retrieval, uncertainty calibration, and selective decision rules under noisy or evolving knowledge.","related_work":["LTM-RAG","CREDENCE"]},
+    {"id":"neuro-symbolic","title":"Neuro-symbolic Reasoning","description":"Executable evidence and source-to-response certification for trustworthy reasoning under changes in input formulation.","related_work":["RAVEN","LLM-INSTRUCT"]}
   ],
-  "emerging_directions":["Healthcare AI - extending reliable multimodal methods to healthcare applications.","Reliable AI - building systems that can calibrate uncertainty and defer when evidence is insufficient.","Neuro-symbolic AI - combining learned representations with explicit reasoning and verification."]
+  "emerging_directions":["Reliable systems that remain trustworthy under noisy evidence, evolving knowledge, and changes in input formulation."]
 }

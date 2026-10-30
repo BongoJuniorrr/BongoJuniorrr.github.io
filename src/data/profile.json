@@ -2,18 +2,18 @@
   "name": "Phuong Huu Vu Tran",
   "name_variants": ["Phuong Huu Vu Tran", "Tran, P. H. V.", "P. H. V. Tran", "P.H.V. Tran", "Phuong H. V. Tran", "Tran Huu Vu Phuong"],
   "short_name": "Tran",
-  "role": "Undergraduate Researcher",
-  "research_identity": "Multimodal & Reliable AI",
-  "tagline": "Undergraduate Researcher in Multimodal & Reliable AI",
+  "role": "Computer Science Undergraduate",
+  "research_identity": "Reliable AI & Multimodal Learning",
+  "tagline": "Computer Science Undergraduate · Reliable AI · Multimodal Learning",
   "affiliation": "Vietnamese-German University",
   "location": "Ho Chi Minh City, Vietnam",
-  "cv": "/Phuong_Huu_Vu_Tran_CV.pdf",
+  "cv": "/Phuong-Tran_CV_Oct8.pdf",
   "email": "10425032@student.vgu.edu.vn",
-  "short_bio": "I work on multimodal retrieval, reliable retrieval-augmented generation, evidence verification, and uncertainty-aware decision making.",
+  "short_bio": "I research reliable AI through multimodal retrieval, evidence verification, and neuro-symbolic reasoning.",
   "bio": [
-    "I am a second-year <b>Computer Science undergraduate</b> at <i>Vietnamese-German University</i>. My current research focuses on multimodal and reliable AI, including multimodal retrieval, robust retrieval-augmented generation, evidence verification, and uncertainty-aware decision making.",
-    "I have worked with <b>PAMI Lab</b> and <b>RAISE Lab</b> on multimodal retrieval, video prediction, reliable RAG, and claim verification, and have contributed to accepted work at ICDM 2026, ArgMining/ACL 2026, and the AI City Challenge Workshop at ECCV 2026.",
-    "I am interested in extending reliable multimodal methods to healthcare AI. Reach me at <a href=\"mailto:10425032@student.vgu.edu.vn\">10425032@student.vgu.edu.vn</a>."
+    "I am a <b>Computer Science undergraduate</b> at <i>Vietnamese-German University</i> researching reliable AI. My work connects multimodal retrieval, evidence verification, and neuro-symbolic reasoning, with a common focus on making model outputs more trustworthy under noisy evidence, evolving knowledge, and changes in input formulation.",
+    "I have worked with <b>PAMI Lab</b>, <b>RAISE Lab</b>, <b>Dream AI Lab</b>, and <b>Transformers Lab</b> on multimodal retrieval, reliable RAG, executable verification, and legal-document RAG. I have contributed to peer-reviewed work at ICDM 2026, ArgMining/ACL 2026, and the AI City Challenge Workshop at ECCV 2026.",
+    "Reach me at <a href=\"mailto:10425032@student.vgu.edu.vn\">10425032@student.vgu.edu.vn</a>."
   ],
   "social": [
     { "platform": "scholar", "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=EDNDwBEAAAAJ&hl=en" },

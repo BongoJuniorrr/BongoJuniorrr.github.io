@@ -20,9 +20,9 @@ const social = profile.social.filter((item) => ['scholar', 'github', 'linkedin',
   <section class="hero page">
     <div class="hero-copy">
       <p class="eyebrow">{profile.name}</p>
-      <h1>{profile.role}<br />in {profile.research_identity}</h1>
+      <h1>{profile.role}<br />{profile.research_identity}</h1>
       <p class="hero-statement">{profile.short_bio}</p>
-      <p class="hero-affiliation">Vietnamese-German University · PAMI Lab · RAISE Lab · Dream AI Lab</p>
+      <p class="hero-affiliation">Vietnamese-German University · PAMI Lab · RAISE Lab · Dream AI Lab · Transformers Lab</p>
       <div class="hero-links">
         {social.map((item) => <a href={item.url} target={item.platform === 'email' ? undefined : '_blank'} rel="noopener">{item.label} <span aria-hidden="true">↗</span></a>)}
         <a href={profile.cv} target="_blank" rel="noopener">CV <span aria-hidden="true">↗</span></a>

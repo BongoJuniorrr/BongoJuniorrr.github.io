@@ -1,8 +1,8 @@
 {
   "title": "Phuong Huu Vu Tran",
-  "description": "Personal research website of Phuong Huu Vu Tran, a Computer Science undergraduate working on multimodal retrieval, reliable RAG, evidence verification, and uncertainty-aware AI.",
+  "description": "Personal research website of Phuong Huu Vu Tran, a Computer Science undergraduate researching reliable AI through multimodal retrieval, evidence verification, and neuro-symbolic reasoning.",
   "url": "https://thvphuong.id.vn",
-  "keywords": "Phuong Huu Vu Tran, Tran Huu Vu Phuong, VGU, Vietnamese-German University, multimodal AI, reliable AI, multimodal retrieval, RAG, evidence verification, uncertainty-aware AI, academic profile",
+  "keywords": "Phuong Huu Vu Tran, Tran Huu Vu Phuong, VGU, Vietnamese-German University, reliable AI, multimodal learning, multimodal retrieval, RAG, evidence verification, neuro-symbolic reasoning, academic profile",
   "og_image": "/images/avatar.png",
   "footer_text": "© 2026 Phuong Huu Vu Tran"
 }
